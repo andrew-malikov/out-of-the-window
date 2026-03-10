@@ -1,0 +1,7 @@
+{
+  "$schema": "vscode://schemas/color-theme",
+  "name": "2030 dark",
+  "include": "./2026_dark.json",
+  "type": "dark",
+  "semanticHighlighting": true
+}
