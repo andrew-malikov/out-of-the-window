@@ -1,10 +1,19 @@
 {
-  "name": "theme-2030",
-  "displayName": "2030 Themes",
-  "description": "Modern, minimal light and dark themes for 2030 with consistent neutral palette and accessible color contrast",
+  "name": "window-theme",
+  "displayName": "Window Themes",
+  "description": "Modern, minimal dark theme for 2030 with consistent neutral palette and accessible color contrast",
   "version": "0.1.0",
-  "publisher": "vscode",
-  "license": "MIT",
+  "publisher": "andrewmalikov",
+  "type": "module",
+  "exports": {
+    ".": "./themes/window.json"
+  },
+  "scripts": {
+    "package": "npx vsce package"
+  },
+  "files": [
+    "themes"
+  ],
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -14,17 +23,15 @@
   "contributes": {
     "themes": [
       {
-        "id": "Experimental Light",
-        "label": "VS Code Light",
-        "uiTheme": "vs",
-        "path": "./themes/2030_light.json"
-      },
-      {
-        "id": "Experimental Dark",
-        "label": "VS Code Dark",
+        "label": "Window Dark",
         "uiTheme": "vs-dark",
-        "path": "./themes/2030_dark.json"
+        "path": "./themes/window-dark.json"
       }
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewmalikov/window"
+  },
+  "license": "MIT"
 }

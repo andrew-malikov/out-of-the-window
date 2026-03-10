@@ -1,6 +1,6 @@
 {
   "$schema": "vscode://schemas/color-theme",
-  "name": "2030 Light",
+  "name": "Window Light",
   "include": "./2026_light.json",
   "type": "light",
   "semanticHighlighting": true
