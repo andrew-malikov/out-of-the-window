@@ -1219,12 +1219,148 @@
       "settings": {
         "foreground": "#B267E6"
       }
+    },
+    {
+      "name": "README palette override: base foreground",
+      "scope": [
+        "source",
+        "meta.embedded",
+        "meta.block",
+        "meta.object.member",
+        "variable.other",
+        "variable.parameter.function"
+      ],
+      "settings": {
+        "foreground": "#D8DEE9"
+      }
+    },
+    {
+      "name": "README palette override: comments",
+      "scope": ["comment", "punctuation.definition.comment", "string.comment"],
+      "settings": {
+        "foreground": "#616E88"
+      }
+    },
+    {
+      "name": "README palette override: keywords / control flow",
+      "scope": ["keyword", "keyword.control"],
+      "settings": {
+        "foreground": "#81A1C1"
+      }
+    },
+    {
+      "name": "README palette override: storage / declarations",
+      "scope": ["storage", "storage.type", "storage.modifier"],
+      "settings": {
+        "foreground": "#5E81AC"
+      }
+    },
+    {
+      "name": "README palette override: types / classes / interfaces",
+      "scope": [
+        "entity.name.type",
+        "entity.name.class",
+        "entity.name.namespace",
+        "support.class",
+        "support.type"
+      ],
+      "settings": {
+        "foreground": "#8FBCBB"
+      }
+    },
+    {
+      "name": "README palette override: functions / methods",
+      "scope": ["entity.name.function", "support.function"],
+      "settings": {
+        "foreground": "#EBCB8B"
+      }
+    },
+    {
+      "name": "README palette override: variables / parameters",
+      "scope": [
+        "variable",
+        "variable.parameter",
+        "meta.definition.variable.name"
+      ],
+      "settings": {
+        "foreground": "#D8DEE9"
+      }
+    },
+    {
+      "name": "README palette override: properties / fields",
+      "scope": [
+        "meta.property-name",
+        "variable.other.property",
+        "support.type.property-name",
+        "meta.object-literal.key"
+      ],
+      "settings": {
+        "foreground": "#88C0D0"
+      }
+    },
+    {
+      "name": "README palette override: strings",
+      "scope": ["string", "string.quoted", "string.template"],
+      "settings": {
+        "foreground": "#D08770"
+      }
+    },
+    {
+      "name": "README palette override: numbers",
+      "scope": ["constant.numeric"],
+      "settings": {
+        "foreground": "#B48EAD"
+      }
+    },
+    {
+      "name": "README palette override: constants / enum members",
+      "scope": [
+        "constant",
+        "variable.other.constant",
+        "variable.other.enummember",
+        "entity.name.constant"
+      ],
+      "settings": {
+        "foreground": "#A3BE8C"
+      }
+    },
+    {
+      "name": "README palette override: operators / punctuation",
+      "scope": [
+        "keyword.operator",
+        "punctuation",
+        "meta.brace",
+        "meta.delimiter"
+      ],
+      "settings": {
+        "foreground": "#C0C8D6"
+      }
+    },
+    {
+      "name": "README palette override: regex",
+      "scope": ["source.regexp", "string.regexp", "constant.regexp"],
+      "settings": {
+        "foreground": "#88C0D0"
+      }
+    },
+    {
+      "name": "README palette override: invalid / error tokens",
+      "scope": [
+        "invalid",
+        "invalid.illegal",
+        "invalid.broken",
+        "invalid.deprecated",
+        "message.error"
+      ],
+      "settings": {
+        "foreground": "#BF616A"
+      }
     }
   ],
   "semanticTokenColors": {
-    "newOperator": "#C586C0",
-    "stringLiteral": "#ce9178",
-    "customLiteral": "#DCDCAA",
-    "numberLiteral": "#b5cea8"
+    "newOperator": "#5E81AC",
+    "stringLiteral": "#D08770",
+    "customLiteral": "#A3BE8C",
+    "numberLiteral": "#B48EAD"
   }
 }

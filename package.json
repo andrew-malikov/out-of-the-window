@@ -25,7 +25,7 @@
       {
         "label": "Window Dark",
         "uiTheme": "vs-dark",
-        "path": "./themes/window-dark.json"
+        "path": "./themes/window_dark.json"
       }
     ]
   },
