@@ -1,7 +1,5 @@
 # Window Theme — Language Samples
 
-This folder contains focused, single-file snippets to preview syntax highlighting across widely used languages.
-
 ## How to use
 
 1. Open any file in this folder.
@@ -30,9 +28,6 @@ This folder contains focused, single-file snippets to preview syntax highlightin
 - `sample.json` — JSON
 - `sample.yaml` — YAML
 - `sample.md` — Markdown
-
-### Functional language additions
-
 - `sample.hs` — Haskell
 - `sample.fs` — F#
 - `sample.erl` — Erlang

@@ -30,11 +30,11 @@ This project’s syntax (token) palette direction is based on **Nord-inspired co
 ### Token Role Mapping Philosophy
 
 - **Comments**: muted cool gray-blue, clearly secondary.
-- **Keywords / control flow**: distinct but not over-saturated.
+- **Keywords / control flow**: intentionally quieter than semantic identifiers.
 - **Types / classes**: clean cool accent, trustworthy and structural.
 - **Functions / calls**: readable highlight, easy to spot in dense code.
-- **Strings**: warmer contrast to separate data from logic.
-- **Numbers / constants**: vivid enough to stand out, restrained enough to stay cohesive.
+- **Strings**: warm but restrained to avoid pulling focus from symbols.
+- **Numbers / constants**: clear but controlled, cohesive with the cool base.
 - **Operators / punctuation**: supportive, never louder than semantic tokens.
 
 ### Base Hex Palette (Syntax Tokens)
@@ -43,15 +43,15 @@ This is the concrete base palette for the Nord × classic Visual Studio directio
 
 - **Base foreground (default text):** `#D8DEE9`
 - **Comments:** `#616E88`
-- **Keywords / control flow:** `#81A1C1`
+- **Keywords / control flow:** `#7F9DBA`
 - **Storage / declarations:** `#5E81AC`
 - **Types / classes / interfaces:** `#8FBCBB`
 - **Functions / methods:** `#EBCB8B`
 - **Variables / parameters:** `#D8DEE9`
 - **Properties / fields:** `#88C0D0`
-- **Strings:** `#D08770`
+- **Strings:** `#C58A77`
 - **Numbers:** `#B48EAD`
-- **Constants / enum members:** `#A3BE8C`
+- **Constants / enum members:** `#98B78A`
 - **Operators / punctuation:** `#C0C8D6`
 - **Regex:** `#88C0D0`
 - **Invalid / error tokens:** `#BF616A`
@@ -59,7 +59,8 @@ This is the concrete base palette for the Nord × classic Visual Studio directio
 ### Palette Rules
 
 - Prefer **desaturated cools** first.
-- Introduce **warm accents sparingly** for semantic differentiation.
+- Keep **warm (orange) and green accents restrained** so they support rather than dominate.
+- Keep **boilerplate tokens** (keywords, storage, modifiers) quieter than semantic identifiers.
 - Avoid excessive rainbow distribution.
 - Ensure consistency across common language grammars.
 - Tune for both small files and large, deeply nested codebases.
@@ -75,5 +76,6 @@ This is the concrete base palette for the Nord × classic Visual Studio directio
 If a token color choice is ambiguous, prefer the option that is:
 
 1. more readable at a glance,
-2. more consistent with Nord’s calm temperature,
-3. and still familiar to developers who grew up with classic Visual Studio themes.
+2. keeps semantic identifiers more visible than boilerplate syntax,
+3. more consistent with Nord’s calm temperature,
+4. and still familiar to developers who grew up with classic Visual Studio themes.
