@@ -1,0 +1,15 @@
+# YAML sample
+name: window-theme-preview
+version: 1
+enabled: true
+metadata:
+  owner: andrew
+  tags:
+    - vscode
+    - theme
+    - palette
+pipelines:
+  - id: lint
+    run: npm run lint
+  - id: test
+    run: npm test

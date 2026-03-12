@@ -1,0 +1,20 @@
+/* CSS sample */
+:root {
+  --bg: #0f111a;
+  --fg: #d8dee9;
+  --accent: #88c0d0;
+}
+
+body {
+  margin: 0;
+  font: 16px/1.5 "Inter", system-ui, sans-serif;
+  color: var(--fg);
+  background: linear-gradient(120deg, var(--bg), #1a1f2b);
+}
+
+.btn {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 70%, white);
+}
+
+.btn:hover { filter: brightness(1.1); }

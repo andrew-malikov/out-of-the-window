@@ -1,0 +1,13 @@
+{
+  "name": "window-theme-preview",
+  "version": "1.0.0",
+  "private": true,
+  "features": {
+    "semanticHighlighting": true,
+    "variants": ["dark", "light"],
+    "contrast": 1.25
+  },
+  "authors": [
+    { "name": "Andrew", "role": "maintainer" }
+  ]
+}
