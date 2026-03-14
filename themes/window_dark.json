@@ -456,6 +456,48 @@
       }
     },
     {
+      "scope": [
+        "punctuation.squarebracket.open",
+        "punctuation.squarebracket.close",
+        "punctuation.curlybrace.open",
+        "punctuation.curlybrace.close",
+        "punctuation.parenthesis.open",
+        "punctuation.parenthesis.close",
+        "punctuation.anglebracket.open",
+        "punctuation.anglebracket.close",
+        "punctuation.definition.typeparameters.begin",
+        "punctuation.definition.typeparameters.end",
+        "punctuation.definition.interpolation.begin",
+        "punctuation.definition.interpolation.end",
+        "source.cs"
+      ],
+      "settings": {
+        "foreground": "#6E88A6"
+      }
+    },
+    {
+      "scope": ["punctuation.terminator.statement"],
+      "settings": {
+        "foreground": "#6E88A6"
+      }
+    },
+    {
+      "scope": [
+        "punctuation.accessor.cs",
+        "punctuation.separator.comma",
+        "source.cs"
+      ],
+      "settings": {
+        "foreground": "#6E88A6"
+      }
+    },
+    {
+      "scope": ["keyword.operator.arrow.cs", "source.cs"],
+      "settings": {
+        "foreground": "#6E88A6"
+      }
+    },
+    {
       "scope": "punctuation.definition.quote.begin.markdown",
       "settings": {
         "foreground": "#6A9955"
@@ -711,7 +753,7 @@
         "storage.type.primitive.groovy"
       ],
       "settings": {
-        "foreground": "#4EC9B0"
+        "foreground": "#b3e3d9"
       }
     },
     {
@@ -741,7 +783,7 @@
         "entity.name.operator"
       ],
       "settings": {
-        "foreground": "#C586C0"
+        "foreground": "#647D97"
       }
     },
     {
@@ -922,7 +964,7 @@
         "storage.type.java"
       ],
       "settings": {
-        "foreground": "#ADBAC7"
+        "foreground": "#647D97"
       }
     },
     {
