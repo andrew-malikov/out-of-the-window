@@ -469,6 +469,7 @@
         "punctuation.definition.typeparameters.end",
         "punctuation.definition.interpolation.begin",
         "punctuation.definition.interpolation.end",
+        "punctuation.cs",
         "source.cs"
       ],
       "settings": {
