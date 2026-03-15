@@ -4,7 +4,7 @@
   "description": "Modern, minimal dark theme for 2030 with consistent neutral palette and accessible color contrast",
   "version": "2026.3.3",
   "publisher": "AndrewMalikov",
-  "icon": "icon.png",
+  "icon": "assets/icon.png",
   "type": "module",
   "exports": {
     ".": "./themes/window.json"
@@ -13,7 +13,8 @@
     "package": "npx vsce package"
   },
   "files": [
-    "themes"
+    "themes",
+    "assets"
   ],
   "engines": {
     "vscode": "^1.85.0"
@@ -32,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrewmalikov/window"
+    "url": "https://github.com/andrewmalikov/out-of-the-window"
   },
   "license": "MIT"
 }
