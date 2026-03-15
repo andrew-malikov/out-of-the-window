@@ -11,8 +11,8 @@ while IFS= read -r -d '' entry; do
     fi
 done < <(git status --porcelain --untracked-files=all -z)
 
-prefix="$(date -u +%Y.%m.%d)"
-latest=0
+prefix="$(date -u +%Y.%-m.)"
+latest=-1
 
 while IFS= read -r tag; do
     suffix="${tag#"$prefix"}"
