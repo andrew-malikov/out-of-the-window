@@ -20,7 +20,7 @@ while IFS= read -r tag; do
     if [[ "$suffix" =~ ^[0-9]+$ ]] && ((suffix > latest)); then
         latest="$suffix"
     fi
-done < <(git tag --list "${prefix}.*")
+done < <(git tag --list "${prefix}*")
 
 next=$((latest + 1))
 tag="${prefix}${next}"
@@ -28,7 +28,9 @@ tag="${prefix}${next}"
 bun -e 'const fs = require("fs"); const pkg = JSON.parse(fs.readFileSync("package.json", "utf8")); pkg.version = process.argv[1]; fs.writeFileSync("package.json", `${JSON.stringify(pkg, null, 2)}\n`);' "$tag"
 
 git add package.json
-git commit -m "chore: new version $tag"
+if ! git diff --cached --quiet; then
+    git commit -m "chore: new version $tag"
+fi
 git tag -a "$tag" -m "Release $tag"
 
 printf 'Updated package.json, created commit, and tagged %s\n' "$tag"
