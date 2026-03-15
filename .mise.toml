@@ -1,0 +1,6 @@
+[tools]
+bun = "latest"
+
+[tasks.tag]
+description = "Create a UTC release tag"
+run = "./scripts/create-tag.sh"

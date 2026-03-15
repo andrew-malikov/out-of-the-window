@@ -2,6 +2,12 @@
 
 Window is a VS Code theme set focused on clear structure, calm contrast, and practical coding ergonomics.
 
+## Release Tagging
+
+- Install `mise` and run `mise install` to provision `bun`, then run `mise run tag` to update `package.json`, create a release commit, and create a new annotated git tag in the `yyyy.mm.dd.number` format.
+- The command uses the current UTC date, increments the trailing number from existing local tags for that day, commits with `chore: new version <tag>`, and does not push anything.
+- It refuses to run when the worktree contains changes outside `package.json`.
+
 ## Syntax Palette Concept: **Nord × Classic Visual Studio**
 
 This project’s syntax (token) palette direction is based on **Nord-inspired cool tones** with the familiarity and readability of **old-school Visual Studio vibes**.
@@ -78,4 +84,3 @@ If a token color choice is ambiguous, prefer the option that is:
 1. more readable at a glance,
 2. keeps semantic identifiers more visible than boilerplate syntax,
 3. more consistent with Nord’s calm temperature,
-4. and still familiar to developers who grew up with classic Visual Studio themes.
