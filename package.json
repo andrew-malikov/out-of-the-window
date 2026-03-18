@@ -28,6 +28,11 @@
         "label": "Window Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/window_dark.json"
+      },
+      {
+        "label": "Window Light",
+        "uiTheme": "vs",
+        "path": "./themes/window_light.json"
       }
     ]
   },
