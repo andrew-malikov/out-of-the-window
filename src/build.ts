@@ -19,6 +19,7 @@ import { diffTokens } from "./specialized/diff";
 import { embeddedTokens } from "./specialized/embedded";
 import { editorTokens } from "./specialized/editor";
 import { functionTokens } from "./specialized/functions";
+import { genericTokens } from "./specialized/generic";
 import { miscTokens } from "./specialized/misc";
 import { regexTokens } from "./specialized/regex";
 import { typeExtensionTokens } from "./specialized/type-extensions";
@@ -38,6 +39,7 @@ const specializedFragments: ThemeModeFragment[] = [
   regexTokens,
   editorTokens,
   miscTokens,
+  genericTokens,
   functionTokens,
   typeExtensionTokens,
   variableTokens,
@@ -198,6 +200,27 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
     ],
     ["keyword.operator.or.regexp", "keyword.control.anchor.regexp"],
     ["constant.character", "constant.other.option"],
+    ["constant.other.placeholder", "constant.character"],
+    [
+      "constant",
+      "entity.name.constant",
+      "variable.other.constant",
+      "variable.other.enummember",
+      "variable.language",
+      "entity",
+    ],
+    ["entity.name", "meta.export.default", "meta.definition.variable"],
+    [
+      "variable.parameter.function",
+      "meta.jsx.children",
+      "meta.block",
+      "meta.tag.attributes",
+      "entity.name.constant",
+      "meta.object.member",
+      "meta.embedded.expression",
+    ],
+    ["entity.name.tag", "support.class.component"],
+    ["string", "string punctuation.section.embedded source"],
     ["markup.heading", "markup.heading entity.name"],
     [
       "punctuation.definition.list.begin.markdown",
@@ -241,8 +264,19 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
     "string.tag",
     "string.value",
     "constant.regexp",
+    "entity.name.function",
     "keyword.operator.quantifier.regexp",
+    "keyword",
+    "support",
+    "meta.property-name",
+    "variable",
+    "variable.other",
+    "invalid.broken",
+    "invalid.deprecated",
+    "invalid.illegal",
+    "invalid.unimplemented",
     "string.regexp constant.character.escape",
+    "message.error",
     "meta.diff.range",
     "meta.diff.header",
     "meta.separator",
@@ -257,6 +291,7 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
     "support.constant",
     "support.variable",
     "meta.module-reference",
+    "support",
     "token.info-token",
     "token.warn-token",
     "token.error-token",
