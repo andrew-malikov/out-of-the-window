@@ -1,7 +1,3 @@
-import {
-  darkLegacyTokenColors,
-  lightLegacyTokenColors,
-} from "./legacy/token-colors";
 import { darkUiColors, lightUiColors } from "./ui/colors";
 import { csharpTokens } from "./languages/csharp";
 import { cssTokens } from "./languages/css";
@@ -23,6 +19,7 @@ import { genericTokens } from "./specialized/generic";
 import { markupTokens } from "./specialized/markup";
 import { miscTokens } from "./specialized/misc";
 import { regexTokens } from "./specialized/regex";
+import { textmateTokens } from "./specialized/textmate";
 import { typeExtensionTokens } from "./specialized/type-extensions";
 import { variableTokens } from "./specialized/variables";
 import { sharedTokens } from "./tokens/shared";
@@ -31,10 +28,10 @@ import type {
   ThemeFragment,
   ThemeMode,
   ThemeModeFragment,
-  ThemeRule,
 } from "./types";
 
 const specializedFragments: ThemeModeFragment[] = [
+  textmateTokens,
   embeddedTokens,
   diffTokens,
   regexTokens,
@@ -78,15 +75,6 @@ const baseDocuments: Record<
   },
 };
 
-const legacyTokenColors: Record<ThemeMode, ThemeRule[]> = {
-  dark: darkLegacyTokenColors.filter((rule: ThemeRule) =>
-    keepLegacyTokenRule("dark", rule),
-  ),
-  light: lightLegacyTokenColors.filter((rule: ThemeRule) =>
-    keepLegacyTokenRule("light", rule),
-  ),
-};
-
 const uiColorsByMode: Record<ThemeMode, Record<string, string>> = {
   dark: darkUiColors,
   light: lightUiColors,
@@ -122,239 +110,6 @@ function mergeFragments(
   }, {});
 }
 
-function getScopes(rule: ThemeRule): string[] {
-  return Array.isArray(rule.scope) ? rule.scope : [rule.scope];
-}
-
-
-function matchesScopes(rule: ThemeRule, scopes: string[]): boolean {
-  const currentScopes = getScopes(rule);
-  return (
-    currentScopes.length === scopes.length &&
-    currentScopes.every((scope, index) => scope === scopes[index])
-  );
-}
-
-
-function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
-  if (rule.name?.startsWith("README palette override:")) {
-    return false;
-  }
-
-  const duplicateNames = new Set([
-    "String interpolation",
-    "Reset JavaScript string interpolation expression",
-    "Function declarations",
-    "Types declaration and references",
-    "Types declaration and references, TS grammar specific",
-    "Variable and parameter name",
-    "CSS property value",
-    "coloring of the Java import and package identifiers",
-    "Regular expression groups",
-  ]);
-
-  if (rule.name && duplicateNames.has(rule.name)) {
-    return false;
-  }
-
-  const duplicateScopeLists = [
-    [
-      "meta.embedded",
-      "source.groovy.embedded",
-      "string meta.image.inline.markdown",
-      "variable.legacy.builtin.python",
-    ],
-    ["entity.name.tag.css", "entity.name.tag.less"],
-    [
-      "entity.other.attribute-name.class.css",
-      "source.css entity.other.attribute-name.class",
-      "entity.other.attribute-name.id.css",
-      "entity.other.attribute-name.parent-selector.css",
-      "entity.other.attribute-name.parent.less",
-      "source.css entity.other.attribute-name.pseudo-class",
-      "entity.other.attribute-name.pseudo-element.css",
-      "source.css.less entity.other.attribute-name.id",
-      "entity.other.attribute-name.scss",
-    ],
-    ["meta.preprocessor", "entity.name.function.preprocessor"],
-    ["string", "meta.embedded.assembly"],
-    [
-      "support.type.vendored.property-name",
-      "support.type.property-name",
-      "source.css variable",
-      "source.coffee.embedded",
-    ],
-    [
-      "punctuation.section.embedded.begin.php",
-      "punctuation.section.embedded.end.php",
-    ],
-    [
-      "storage.modifier.import.java",
-      "variable.language.wildcard.java",
-      "storage.modifier.package.java",
-    ],
-    ["source.regexp", "string.regexp"],
-    [
-      "string.regexp.character-class",
-      "string.regexp constant.character.escape",
-      "string.regexp source.ruby.embedded",
-      "string.regexp string.regexp.arbitrary-repitition",
-    ],
-    ["keyword.operator.or.regexp", "keyword.control.anchor.regexp"],
-    ["constant.character", "constant.other.option"],
-    ["constant.other.placeholder", "constant.character"],
-    [
-      "constant",
-      "entity.name.constant",
-      "variable.other.constant",
-      "variable.other.enummember",
-      "variable.language",
-      "entity",
-    ],
-    ["entity.name", "meta.export.default", "meta.definition.variable"],
-    [
-      "variable.parameter.function",
-      "meta.jsx.children",
-      "meta.block",
-      "meta.tag.attributes",
-      "entity.name.constant",
-      "meta.object.member",
-      "meta.embedded.expression",
-    ],
-    ["entity.name.tag", "support.class.component"],
-    ["string", "string punctuation.section.embedded source"],
-    ["markup.heading", "markup.heading entity.name"],
-    ["punctuation.cs", "punctuation.accessor.cs", "keyword.operator.arrow.cs"],
-    [
-      "punctuation.definition.list.begin.markdown",
-      "punctuation.definition.quote.begin.markdown",
-    ],
-    [
-      "markup.deleted",
-      "meta.diff.header.from-file",
-      "punctuation.definition.deleted",
-    ],
-    [
-      "markup.inserted",
-      "meta.diff.header.to-file",
-      "punctuation.definition.inserted",
-    ],
-    ["markup.changed", "punctuation.definition.changed"],
-    ["markup.ignored", "markup.untracked"],
-    [
-      "brackethighlighter.tag",
-      "brackethighlighter.curly",
-      "brackethighlighter.round",
-      "brackethighlighter.square",
-      "brackethighlighter.angle",
-      "brackethighlighter.quote",
-    ],
-    ["constant.other.reference.link", "string.other.link"],
-  ];
-
-  if (duplicateScopeLists.some((scopes) => matchesScopes(rule, scopes))) {
-    return false;
-  }
-
-  const duplicateScopes = new Set([
-    "entity.name.tag",
-    "punctuation.definition.tag",
-    "markup.italic",
-    "markup.bold",
-    "meta.preprocessor.string",
-    "meta.preprocessor.numeric",
-    "meta.structure.dictionary.key.python",
-    "support.function.git-rebase",
-    "constant.sha.git-rebase",
-    "string.tag",
-    "string.value",
-    "constant.regexp",
-    "entity.name.function",
-    "keyword.operator.quantifier.regexp",
-    "keyword",
-    "support",
-    "meta.property-name",
-    "variable",
-    "variable.other",
-    "invalid.broken",
-    "invalid.deprecated",
-    "invalid.illegal",
-    "invalid.unimplemented",
-    "string.regexp constant.character.escape",
-    "message.error",
-    "meta.diff.range",
-    "meta.diff.header",
-    "meta.separator",
-    "meta.output",
-    "support.type.property-name.json",
-    "markup.quote",
-    "markup.inline.raw",
-    "punctuation.definition.quote.begin.markdown",
-    "punctuation.definition.list.begin.markdown",
-    "markup.underline",
-    "markup.strikethrough",
-    "punctuation.section.embedded",
-    "brackethighlighter.unmatched",
-    "carriage-return",
-    "string variable",
-    "support.constant",
-    "support.variable",
-    "meta.module-reference",
-    "support",
-    "token.info-token",
-    "token.warn-token",
-    "token.error-token",
-    "token.debug-token",
-  ]);
-
-  if (duplicateScopes.has(getScopes(rule)[0]) && getScopes(rule).length === 1) {
-    return false;
-  }
-
-  if (mode === "light") {
-    if (matchesScopes(rule, ["markup.heading", "markup.heading entity.name"])) {
-      return false;
-    }
-  }
-
-  if (matchesScopes(rule, [
-    'punctuation.squarebracket.open',
-    'punctuation.squarebracket.close',
-    'punctuation.curlybrace.open',
-    'punctuation.curlybrace.close',
-    'punctuation.parenthesis.open',
-    'punctuation.parenthesis.close',
-    'punctuation.anglebracket.open',
-    'punctuation.anglebracket.close',
-    'punctuation.definition.typeparameters.begin',
-    'punctuation.definition.typeparameters.end',
-    'punctuation.definition.interpolation.begin',
-    'punctuation.definition.interpolation.end',
-    'punctuation.cs',
-    'source.cs',
-  ])) {
-    return false;
-  }
-
-  if (matchesScopes(rule, ['punctuation.accessor.cs', 'punctuation.separator.comma', 'source.cs'])) {
-    return false;
-  }
-
-  if (matchesScopes(rule, ['keyword.operator.arrow.cs', 'source.cs'])) {
-    return false;
-  }
-
-  if (matchesScopes(rule, ['storage.modifier.package', 'storage.modifier.import', 'storage.type.java'])) {
-    return false;
-  }
-
-  if (rule.name === 'Object keys, TS grammar specific') {
-    return false;
-  }
-
-  return true;
-}
-
 export function buildTheme(mode: ThemeMode): ThemeDocument {
   const merged = mergeFragments(mode, [
     ...specializedFragments,
@@ -369,7 +124,7 @@ export function buildTheme(mode: ThemeMode): ThemeDocument {
       ...uiColorsByMode[mode],
       ...(merged.colors ?? {}),
     },
-    tokenColors: [...legacyTokenColors[mode], ...(merged.tokenColors ?? [])],
+    tokenColors: merged.tokenColors ?? [],
     semanticTokenColors: merged.semanticTokenColors ?? {},
   };
 }
