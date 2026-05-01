@@ -1,94 +1,27 @@
 # Window Theme
 
-Window is a VS Code theme set focused on clear structure, calm contrast, and practical coding ergonomics.
+![Window Theme preview](./frontpage/preview.jpeg)
 
-## Theme Source Layout
+## Build
 
-- Theme JSON in `themes/` is generated from TypeScript source in `src/`.
-- UI colors live in `src/ui/`.
-- Shared token palette and semantic rules live in `src/palette.ts`, `src/tokens/`, and `src/semantic/`.
-- Language-specific token overrides live in `src/languages/` so grammars like C# and Java can keep their own scope mappings.
-- Run `bun run build` or `mise run build` to regenerate `themes/window_dark.json` and `themes/window_light.json`.
+1. Install dependencies with `mise install` or make sure `bun` is available.
+2. Run `bun run build` to regenerate `themes/window_dark.json` and `themes/window_light.json` from `src/`.
+3. Run `bun run package` to rebuild the themes and create a VS Code extension package.
 
-## Release Tagging
+## Color Source
 
-- Install `mise` and run `mise install` to provision `bun`, then run `mise run tag` to build theme JSON, update `package.json`, create a release commit, and create a new annotated git tag in the `yyyy.mm.dd.number` format.
-- The command uses the current UTC date, increments the trailing number from existing local tags for that day, commits with `chore: new version <tag>`, and does not push anything.
-- It refuses to run when the worktree contains changes outside `package.json` and generated theme JSON in `themes/`.
+- Syntax colors come from [`src/palette.ts`](./src/palette.ts).
 
-## Syntax Palette Concept: **Nord × Classic Visual Studio**
+## Structure
 
-This project’s syntax (token) palette direction is based on **Nord-inspired cool tones** with the familiarity and readability of **old-school Visual Studio vibes**.
+- `src/write-themes.ts`: writes the generated theme JSON files.
+- `src/build.ts`: merges UI colors, token rules, and semantic tokens into each theme.
+- `src/ui/`: editor and workbench colors.
+- `src/tokens/` and `src/semantic/`: shared token and semantic token rules.
+- `src/languages/`: language-specific scope overrides.
+- `src/specialized/`: focused rules for cases like diff, regex, markup, and embedded code.
+- `themes/`: generated output consumed by VS Code.
 
-### Design Intent
+## Theme Intent
 
-- Keep the code surface calm and low-fatigue (Nord-style cool base).
-- Preserve quick token recognition and “muscle memory” from classic Visual Studio palettes.
-- Favor practical contrast over novelty.
-- Maintain a professional, IDE-like feel rather than a neon or highly stylized look.
-
-### Core Character
-
-1. **Cool foundation (Nord influence)**
-   - Blues, blue-grays, icy cyans, and soft desaturated neutrals.
-   - A stable, quiet visual field for long sessions.
-
-2. **Legacy IDE familiarity (Visual Studio influence)**
-   - Recognizable separation between keywords, types, functions, strings, and comments.
-   - Slightly warmer accents where needed to support instant scanning.
-
-3. **Balanced contrast**
-   - Strong enough for fast parsing.
-   - Soft enough to avoid glare and visual noise.
-
-### Token Role Mapping Philosophy
-
-- **Comments**: muted cool gray-blue, clearly secondary.
-- **Keywords / control flow**: intentionally quieter than semantic identifiers.
-- **Types / classes**: clean cool accent, trustworthy and structural.
-- **Functions / calls**: readable highlight, easy to spot in dense code.
-- **Strings**: warm but restrained to avoid pulling focus from symbols.
-- **Numbers / constants**: clear but controlled, cohesive with the cool base.
-- **Operators / punctuation**: supportive, never louder than semantic tokens.
-
-### Base Hex Palette (Syntax Tokens)
-
-This is the concrete base palette for the Nord × classic Visual Studio direction:
-
-- **Base foreground (default text):** `#D8DEE9`
-- **Comments:** `#616E88`
-- **Keywords / control flow:** `#7F9DBA`
-- **Storage / declarations:** `#5E81AC`
-- **Types / classes / interfaces:** `#8FBCBB`
-- **Functions / methods:** `#EBCB8B`
-- **Variables / parameters:** `#D8DEE9`
-- **Properties / fields:** `#88C0D0`
-- **Strings:** `#C58A77`
-- **Numbers:** `#B48EAD`
-- **Constants / enum members:** `#98B78A`
-- **Operators / punctuation:** `#C0C8D6`
-- **Regex:** `#88C0D0`
-- **Invalid / error tokens:** `#BF616A`
-
-### Palette Rules
-
-- Prefer **desaturated cools** first.
-- Keep **warm (orange) and green accents restrained** so they support rather than dominate.
-- Keep **boilerplate tokens** (keywords, storage, modifiers) quieter than semantic identifiers.
-- Avoid excessive rainbow distribution.
-- Ensure consistency across common language grammars.
-- Tune for both small files and large, deeply nested codebases.
-
-### Accessibility and Ergonomics
-
-- Prioritize legibility in long editing sessions.
-- Keep line-level and token-level contrast predictable.
-- Preserve clarity under dim environments and typical monitor gamma profiles.
-
-### Guiding Principle
-
-If a token color choice is ambiguous, prefer the option that is:
-
-1. more readable at a glance,
-2. keeps semantic identifiers more visible than boilerplate syntax,
-3. more consistent with Nord’s calm temperature,
+The theme keeps semantic signals easy to spot while boilerplate syntax stays quieter. Types, calls, strings, and other meaningful code should surface first; punctuation, modifiers, and similar syntax noise should support the read without competing for attention.
