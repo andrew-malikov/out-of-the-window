@@ -20,6 +20,7 @@ import { embeddedTokens } from "./specialized/embedded";
 import { editorTokens } from "./specialized/editor";
 import { functionTokens } from "./specialized/functions";
 import { genericTokens } from "./specialized/generic";
+import { markupTokens } from "./specialized/markup";
 import { miscTokens } from "./specialized/misc";
 import { regexTokens } from "./specialized/regex";
 import { typeExtensionTokens } from "./specialized/type-extensions";
@@ -40,6 +41,7 @@ const specializedFragments: ThemeModeFragment[] = [
   editorTokens,
   miscTokens,
   genericTokens,
+  markupTokens,
   functionTokens,
   typeExtensionTokens,
   variableTokens,
@@ -222,6 +224,7 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
     ["entity.name.tag", "support.class.component"],
     ["string", "string punctuation.section.embedded source"],
     ["markup.heading", "markup.heading entity.name"],
+    ["punctuation.cs", "punctuation.accessor.cs", "keyword.operator.arrow.cs"],
     [
       "punctuation.definition.list.begin.markdown",
       "punctuation.definition.quote.begin.markdown",
@@ -256,6 +259,8 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
   const duplicateScopes = new Set([
     "entity.name.tag",
     "punctuation.definition.tag",
+    "markup.italic",
+    "markup.bold",
     "meta.preprocessor.string",
     "meta.preprocessor.numeric",
     "meta.structure.dictionary.key.python",
@@ -285,6 +290,10 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
     "markup.quote",
     "markup.inline.raw",
     "punctuation.definition.quote.begin.markdown",
+    "punctuation.definition.list.begin.markdown",
+    "markup.underline",
+    "markup.strikethrough",
+    "punctuation.section.embedded",
     "brackethighlighter.unmatched",
     "carriage-return",
     "string variable",
@@ -306,6 +315,41 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
     if (matchesScopes(rule, ["markup.heading", "markup.heading entity.name"])) {
       return false;
     }
+  }
+
+  if (matchesScopes(rule, [
+    'punctuation.squarebracket.open',
+    'punctuation.squarebracket.close',
+    'punctuation.curlybrace.open',
+    'punctuation.curlybrace.close',
+    'punctuation.parenthesis.open',
+    'punctuation.parenthesis.close',
+    'punctuation.anglebracket.open',
+    'punctuation.anglebracket.close',
+    'punctuation.definition.typeparameters.begin',
+    'punctuation.definition.typeparameters.end',
+    'punctuation.definition.interpolation.begin',
+    'punctuation.definition.interpolation.end',
+    'punctuation.cs',
+    'source.cs',
+  ])) {
+    return false;
+  }
+
+  if (matchesScopes(rule, ['punctuation.accessor.cs', 'punctuation.separator.comma', 'source.cs'])) {
+    return false;
+  }
+
+  if (matchesScopes(rule, ['keyword.operator.arrow.cs', 'source.cs'])) {
+    return false;
+  }
+
+  if (matchesScopes(rule, ['storage.modifier.package', 'storage.modifier.import', 'storage.type.java'])) {
+    return false;
+  }
+
+  if (rule.name === 'Object keys, TS grammar specific') {
+    return false;
   }
 
   return true;

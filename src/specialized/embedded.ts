@@ -44,6 +44,11 @@ export const embeddedTokens: ThemeModeFragment = {
     ],
   },
   light: {
-    tokenColors: [],
+    tokenColors: [
+      {
+        scope: ['punctuation.section.embedded'],
+        settings: { foreground: '#75808C' },
+      },
+    ],
   },
 }
