@@ -411,7 +411,7 @@
         "variable.other.enummember"
       ],
       "settings": {
-        "foreground": "#4FC1FF"
+        "foreground": "#6CB6FF"
       }
     },
     {
@@ -434,7 +434,7 @@
     {
       "scope": "entity.name.label",
       "settings": {
-        "foreground": "#C8C8C8"
+        "foreground": "#D4D4D4"
       }
     },
     {
@@ -970,8 +970,16 @@
       "name": "Comments",
       "scope": [
         "comment",
-        "punctuation.definition.comment",
         "string.comment"
+      ],
+      "settings": {
+        "foreground": "#6F7B88"
+      }
+    },
+    {
+      "name": "Comment punctuation",
+      "scope": [
+        "punctuation.definition.comment"
       ],
       "settings": {
         "foreground": "#616E88"
@@ -1226,7 +1234,7 @@
       "name": "brackets of XML/HTML tags",
       "scope": "punctuation.definition.tag",
       "settings": {
-        "foreground": "#808080"
+        "foreground": "#616E88"
       }
     },
     {

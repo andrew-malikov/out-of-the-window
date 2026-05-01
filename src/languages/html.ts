@@ -11,7 +11,7 @@ export const htmlTokens: ThemeModeFragment = {
       {
         name: 'brackets of XML/HTML tags',
         scope: 'punctuation.definition.tag',
-        settings: { foreground: '#808080' },
+        settings: { foreground: syntax('dark').commentMuted },
       },
       {
         scope: 'string.tag',

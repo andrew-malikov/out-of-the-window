@@ -4,7 +4,8 @@ export const syntaxPalette: Record<ThemeMode, Record<string, string>> = {
   dark: {
     foreground: '#D8DEE9',
     mutedForeground: '#ADBAC7',
-    comment: '#616E88',
+    comment: '#6F7B88',
+    commentMuted: '#616E88',
     keyword: '#6E88A6',
     storage: '#647D97',
     type: '#8FBCBB',
@@ -33,6 +34,7 @@ export const syntaxPalette: Record<ThemeMode, Record<string, string>> = {
   light: {
     foreground: '#2C3135',
     comment: '#6F7B88',
+    commentMuted: '#6F7B88',
     keyword: '#75808C',
     storage: '#75808C',
     type: '#4F6B78',

@@ -584,8 +584,16 @@
       "name": "Comments",
       "scope": [
         "comment",
-        "punctuation.definition.comment",
         "string.comment"
+      ],
+      "settings": {
+        "foreground": "#6F7B88"
+      }
+    },
+    {
+      "name": "Comment punctuation",
+      "scope": [
+        "punctuation.definition.comment"
       ],
       "settings": {
         "foreground": "#6F7B88"

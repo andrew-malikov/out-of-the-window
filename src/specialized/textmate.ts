@@ -94,7 +94,7 @@ export const textmateTokens: ThemeModeFragment = {
         name: "Constants and enums",
         scope: ["variable.other.constant", "variable.other.enummember"],
         settings: {
-          foreground: "#4FC1FF",
+          foreground: syntax('dark').accentSky,
         },
       },
       {
@@ -117,7 +117,7 @@ export const textmateTokens: ThemeModeFragment = {
       {
         scope: "entity.name.label",
         settings: {
-          foreground: "#C8C8C8",
+          foreground: syntax('dark').accentGray,
         },
       },
     ],

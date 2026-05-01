@@ -11,8 +11,13 @@ export const sharedTokens: ThemeModeFragment = {
       },
       {
         name: 'Comments',
-        scope: ['comment', 'punctuation.definition.comment', 'string.comment'],
+        scope: ['comment', 'string.comment'],
         settings: { foreground: syntax('dark').comment },
+      },
+      {
+        name: 'Comment punctuation',
+        scope: ['punctuation.definition.comment'],
+        settings: { foreground: syntax('dark').commentMuted },
       },
       {
         name: 'Keywords / control flow',
@@ -80,8 +85,13 @@ export const sharedTokens: ThemeModeFragment = {
     tokenColors: [
       {
         name: 'Comments',
-        scope: ['comment', 'punctuation.definition.comment', 'string.comment'],
+        scope: ['comment', 'string.comment'],
         settings: { foreground: syntax('light').comment },
+      },
+      {
+        name: 'Comment punctuation',
+        scope: ['punctuation.definition.comment'],
+        settings: { foreground: syntax('light').commentMuted },
       },
       {
         name: 'Keywords / control flow',

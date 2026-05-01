@@ -57,7 +57,7 @@ export const regexTokens: ThemeModeFragment = {
       },
       {
         scope: 'string.regexp constant.character.escape',
-        settings: { foreground: '#8DDB8C', fontStyle: 'bold' },
+        settings: { foreground: syntax('dark').accentGreenBright, fontStyle: 'bold' },
       },
     ],
   },
