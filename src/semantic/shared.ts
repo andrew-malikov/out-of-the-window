@@ -32,7 +32,7 @@ export const sharedSemanticTokens: ThemeModeFragment = {
       type: syntax('light').type,
       newOperator: syntax('light').keyword,
       stringLiteral: syntax('light').string,
-      customLiteral: '#4E7FA8',
+      customLiteral: syntax('light').number,
       numberLiteral: syntax('light').number,
     },
   },

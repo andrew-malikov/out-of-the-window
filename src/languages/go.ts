@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const goTokens: ThemeModeFragment = {
@@ -13,7 +14,7 @@ export const goTokens: ThemeModeFragment = {
           'storage.type.error.go',
           'storage.type.rune.go',
         ],
-        settings: { foreground: '#b3e3d9' },
+        settings: { foreground: syntax('dark').accentGreenSoft },
       },
     ],
   },

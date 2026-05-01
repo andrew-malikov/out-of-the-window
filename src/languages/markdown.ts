@@ -36,7 +36,7 @@ export const markdownTokens: ThemeModeFragment = {
       {
         name: 'Markdown quote',
         scope: ['markup.quote'],
-        settings: { foreground: '#4F956A' },
+        settings: { foreground: syntax('light').accentGreen },
       },
       {
         name: 'Markdown inline code',

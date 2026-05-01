@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const htmlTokens: ThemeModeFragment = {
@@ -5,7 +6,7 @@ export const htmlTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: 'entity.name.tag',
-        settings: { foreground: '#569cd6' },
+        settings: { foreground: syntax('dark').accentBlue },
       },
       {
         name: 'brackets of XML/HTML tags',
@@ -14,11 +15,11 @@ export const htmlTokens: ThemeModeFragment = {
       },
       {
         scope: 'string.tag',
-        settings: { foreground: '#ce9178' },
+        settings: { foreground: syntax('dark').string },
       },
       {
         scope: 'string.value',
-        settings: { foreground: '#ce9178' },
+        settings: { foreground: syntax('dark').string },
       },
     ],
   },

@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
 export const genericTokens: ThemeModeFragment = {
@@ -16,7 +17,7 @@ export const genericTokens: ThemeModeFragment = {
           "variable.language",
           "entity",
         ],
-        settings: { foreground: "#6CB6FF" },
+        settings: { foreground: syntax('dark').accentSky },
       },
       {
         scope: ["entity.name", "meta.export.default", "meta.definition.variable"],
@@ -32,23 +33,23 @@ export const genericTokens: ThemeModeFragment = {
           "meta.object.member",
           "meta.embedded.expression",
         ],
-        settings: { foreground: "#ADBAC7" },
+        settings: { foreground: syntax('dark').mutedForeground },
       },
       {
         scope: ["entity.name.tag", "support.class.component"],
-        settings: { foreground: "#8DDB8C" },
+        settings: { foreground: syntax('dark').accentGreenBright },
       },
       {
         scope: ["string", "string punctuation.section.embedded source"],
-        settings: { foreground: "#96D0FF" },
+        settings: { foreground: syntax('dark').accentCyanSoft },
       },
       {
         scope: "support",
-        settings: { foreground: "#6CB6FF" },
+        settings: { foreground: syntax('dark').accentSky },
       },
       {
         scope: "variable.other",
-        settings: { foreground: "#ADBAC7" },
+        settings: { foreground: syntax('dark').mutedForeground },
       },
     ],
   },
@@ -56,7 +57,7 @@ export const genericTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: ["constant.other.placeholder", "constant.character"],
-        settings: { foreground: "#4E7FA8" },
+        settings: { foreground: syntax('light').number },
       },
       {
         scope: [
@@ -67,11 +68,11 @@ export const genericTokens: ThemeModeFragment = {
           "variable.language",
           "entity",
         ],
-        settings: { foreground: "#2F86AD" },
+        settings: { foreground: syntax('light').constant },
       },
       {
         scope: ["entity.name", "meta.export.default", "meta.definition.variable"],
-        settings: { foreground: "#2C3135" },
+        settings: { foreground: syntax('light').foreground },
       },
       {
         scope: [
@@ -83,23 +84,23 @@ export const genericTokens: ThemeModeFragment = {
           "meta.object.member",
           "meta.embedded.expression",
         ],
-        settings: { foreground: "#2C3135" },
+        settings: { foreground: syntax('light').foreground },
       },
       {
         scope: ["entity.name.tag", "support.class.component"],
-        settings: { foreground: "#4F956A" },
+        settings: { foreground: syntax('light').accentGreen },
       },
       {
         scope: ["string", "string punctuation.section.embedded source"],
-        settings: { foreground: "#6A8094" },
+        settings: { foreground: syntax('light').string },
       },
       {
         scope: "support",
-        settings: { foreground: "#75808C" },
+        settings: { foreground: syntax('light').keyword },
       },
       {
         scope: "variable.other",
-        settings: { foreground: "#2C3135" },
+        settings: { foreground: syntax('light').foreground },
       },
     ],
   },

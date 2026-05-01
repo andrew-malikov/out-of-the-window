@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const pythonTokens: ThemeModeFragment = {
@@ -5,11 +6,11 @@ export const pythonTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: 'meta.structure.dictionary.key.python',
-        settings: { foreground: '#9cdcfe' },
+        settings: { foreground: syntax('dark').accentCyan },
       },
       {
         scope: ['keyword.operator.logical.python'],
-        settings: { foreground: '#569cd6' },
+        settings: { foreground: syntax('dark').accentBlue },
       },
     ],
   },

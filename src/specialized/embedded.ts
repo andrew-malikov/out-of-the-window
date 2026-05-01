@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const embeddedTokens: ThemeModeFragment = {
@@ -5,23 +6,23 @@ export const embeddedTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: ['meta.embedded', 'source.groovy.embedded', 'string meta.image.inline.markdown', 'variable.legacy.builtin.python'],
-        settings: { foreground: '#D4D4D4' },
+        settings: { foreground: syntax('dark').accentGray },
       },
       {
         scope: ['meta.preprocessor', 'entity.name.function.preprocessor'],
-        settings: { foreground: '#569cd6' },
+        settings: { foreground: syntax('dark').accentBlue },
       },
       {
         scope: 'meta.preprocessor.string',
-        settings: { foreground: '#ce9178' },
+        settings: { foreground: syntax('dark').string },
       },
       {
         scope: 'meta.preprocessor.numeric',
-        settings: { foreground: '#b5cea8' },
+        settings: { foreground: syntax('dark').accentGreen },
       },
       {
         scope: ['string', 'meta.embedded.assembly'],
-        settings: { foreground: '#ce9178' },
+        settings: { foreground: syntax('dark').string },
       },
       {
         name: 'String interpolation',
@@ -30,16 +31,16 @@ export const embeddedTokens: ThemeModeFragment = {
           'punctuation.definition.template-expression.end',
           'punctuation.section.embedded',
         ],
-        settings: { foreground: '#569cd6' },
+        settings: { foreground: syntax('dark').accentBlue },
       },
       {
         name: 'Reset JavaScript string interpolation expression',
         scope: ['meta.template.expression'],
-        settings: { foreground: '#d4d4d4' },
+        settings: { foreground: syntax('dark').accentGray },
       },
       {
         scope: ['punctuation.section.embedded.begin.php', 'punctuation.section.embedded.end.php'],
-        settings: { foreground: '#569cd6' },
+        settings: { foreground: syntax('dark').accentBlue },
       },
     ],
   },
@@ -47,7 +48,7 @@ export const embeddedTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: ['punctuation.section.embedded'],
-        settings: { foreground: '#75808C' },
+        settings: { foreground: syntax('light').keyword },
       },
     ],
   },

@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
 export const markupTokens: ThemeModeFragment = {
@@ -25,34 +26,34 @@ export const markupTokens: ThemeModeFragment = {
         scope: "markup.heading",
         settings: {
           fontStyle: "bold",
-          foreground: "#569cd6",
+          foreground: syntax('dark').accentBlue,
         },
       },
       {
         scope: "markup.inserted",
         settings: {
-          foreground: "#b5cea8",
+          foreground: syntax('dark').accentGreen,
         },
       },
       {
         scope: "markup.deleted",
         settings: {
-          foreground: "#ce9178",
+          foreground: syntax('dark').string,
         },
       },
       {
         scope: "markup.changed",
         settings: {
-          foreground: "#569cd6",
+          foreground: syntax('dark').accentBlue,
         },
       },
       {
         scope: "markup.italic",
-        settings: { foreground: "#ADBAC7", fontStyle: "italic" },
+        settings: { foreground: syntax('dark').mutedForeground, fontStyle: "italic" },
       },
       {
         scope: "markup.bold",
-        settings: { foreground: "#ADBAC7", fontStyle: "bold" },
+        settings: { foreground: syntax('dark').mutedForeground, fontStyle: "bold" },
       },
       {
         scope: ["markup.underline"],
@@ -68,11 +69,11 @@ export const markupTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: "markup.italic",
-        settings: { foreground: "#2C3135", fontStyle: "italic" },
+        settings: { foreground: syntax('light').foreground, fontStyle: "italic" },
       },
       {
         scope: "markup.bold",
-        settings: { foreground: "#2C3135", fontStyle: "bold" },
+        settings: { foreground: syntax('light').foreground, fontStyle: "bold" },
       },
       {
         scope: ["markup.underline"],

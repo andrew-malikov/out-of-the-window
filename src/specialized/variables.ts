@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const variableTokens: ThemeModeFragment = {
@@ -12,7 +13,7 @@ export const variableTokens: ThemeModeFragment = {
           'entity.name.variable',
           'constant.other.placeholder',
         ],
-        settings: { foreground: '#9CDCFE' },
+        settings: { foreground: syntax('dark').accentCyan },
       },
     ],
   },

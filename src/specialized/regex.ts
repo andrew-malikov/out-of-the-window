@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const regexTokens: ThemeModeFragment = {
@@ -18,7 +19,7 @@ export const regexTokens: ThemeModeFragment = {
           'keyword.operator.negation.regexp',
           'support.other.parenthesis.regexp',
         ],
-        settings: { foreground: '#CE9178' },
+        settings: { foreground: syntax('dark').string },
       },
       {
         scope: [
@@ -27,7 +28,7 @@ export const regexTokens: ThemeModeFragment = {
           'constant.other.character-class.regexp',
           'constant.character.set.regexp',
         ],
-        settings: { foreground: '#d16969' },
+        settings: { foreground: syntax('dark').accentRed },
       },
       {
         scope: ['keyword.operator.or.regexp', 'keyword.control.anchor.regexp'],
@@ -35,15 +36,15 @@ export const regexTokens: ThemeModeFragment = {
       },
       {
         scope: 'keyword.operator.quantifier.regexp',
-        settings: { foreground: '#d7ba7d' },
+        settings: { foreground: syntax('dark').function },
       },
       {
         scope: ['constant.character', 'constant.other.option'],
-        settings: { foreground: '#569cd6' },
+        settings: { foreground: syntax('dark').accentBlue },
       },
       {
         scope: ['source.regexp', 'string.regexp'],
-        settings: { foreground: '#96D0FF' },
+        settings: { foreground: syntax('dark').accentCyanSoft },
       },
       {
         scope: [
@@ -52,7 +53,7 @@ export const regexTokens: ThemeModeFragment = {
           'string.regexp source.ruby.embedded',
           'string.regexp string.regexp.arbitrary-repitition',
         ],
-        settings: { foreground: '#96D0FF' },
+        settings: { foreground: syntax('dark').accentCyanSoft },
       },
       {
         scope: 'string.regexp constant.character.escape',
@@ -64,7 +65,7 @@ export const regexTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: ['source.regexp', 'string.regexp'],
-        settings: { foreground: '#2F86AD' },
+        settings: { foreground: syntax('light').regex },
       },
       {
         scope: [
@@ -73,11 +74,11 @@ export const regexTokens: ThemeModeFragment = {
           'string.regexp source.ruby.embedded',
           'string.regexp string.regexp.arbitrary-repitition',
         ],
-        settings: { foreground: '#2F86AD' },
+        settings: { foreground: syntax('light').regex },
       },
       {
         scope: 'string.regexp constant.character.escape',
-        settings: { fontStyle: 'bold', foreground: '#4F956A' },
+        settings: { fontStyle: 'bold', foreground: syntax('light').accentGreen },
       },
     ],
   },

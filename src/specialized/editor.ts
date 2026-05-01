@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
 export const editorTokens: ThemeModeFragment = {
@@ -16,11 +17,11 @@ export const editorTokens: ThemeModeFragment = {
       },
       {
         scope: "brackethighlighter.unmatched",
-        settings: { foreground: "#FF938A" },
+        settings: { foreground: syntax('dark').invalidSoft },
       },
       {
         scope: ["constant.other.reference.link", "string.other.link"],
-        settings: { foreground: "#96D0FF" },
+        settings: { foreground: syntax('dark').accentCyanSoft },
       },
       {
         scope: "token.info-token",
@@ -51,15 +52,15 @@ export const editorTokens: ThemeModeFragment = {
           "brackethighlighter.angle",
           "brackethighlighter.quote",
         ],
-        settings: { foreground: "#75808C" },
+        settings: { foreground: syntax('light').keyword },
       },
       {
         scope: "brackethighlighter.unmatched",
-        settings: { foreground: "#476C8D" },
+        settings: { foreground: syntax('light').invalid },
       },
       {
         scope: ["constant.other.reference.link", "string.other.link"],
-        settings: { foreground: "#2F86AD" },
+        settings: { foreground: syntax('light').constant },
       },
     ],
   },

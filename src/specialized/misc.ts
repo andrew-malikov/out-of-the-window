@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
 export const miscTokens: ThemeModeFragment = {
@@ -10,26 +11,26 @@ export const miscTokens: ThemeModeFragment = {
         scope: "carriage-return",
         settings: {
           fontStyle: "italic underline",
-          background: "#4E7FA8",
+          background: syntax('light').number,
           foreground: "#F7F9FA",
           content: "^M",
         },
       },
       {
         scope: "string variable",
-        settings: { foreground: "#6A8094" },
+        settings: { foreground: syntax('light').string },
       },
       {
         scope: "support.constant",
-        settings: { foreground: "#2F86AD" },
+        settings: { foreground: syntax('light').constant },
       },
       {
         scope: "support.variable",
-        settings: { foreground: "#404A53" },
+        settings: { foreground: syntax('light').property },
       },
       {
         scope: "meta.module-reference",
-        settings: { foreground: "#75808C" },
+        settings: { foreground: syntax('light').keyword },
       },
     ],
   },

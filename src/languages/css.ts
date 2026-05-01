@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const cssTokens: ThemeModeFragment = {
@@ -5,7 +6,7 @@ export const cssTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: ['entity.name.tag.css', 'entity.name.tag.less'],
-        settings: { foreground: '#d7ba7d' },
+        settings: { foreground: syntax('dark').function },
       },
       {
         scope: [
@@ -19,11 +20,11 @@ export const cssTokens: ThemeModeFragment = {
           'source.css.less entity.other.attribute-name.id',
           'entity.other.attribute-name.scss',
         ],
-        settings: { foreground: '#d7ba7d' },
+        settings: { foreground: syntax('dark').function },
       },
       {
         scope: ['support.type.vendored.property-name', 'support.type.property-name', 'source.css variable', 'source.coffee.embedded'],
-        settings: { foreground: '#9cdcfe' },
+        settings: { foreground: syntax('dark').accentCyan },
       },
       {
         name: 'CSS property value',
@@ -36,7 +37,7 @@ export const cssTokens: ThemeModeFragment = {
           'constant.other.rgb-value',
           'support.constant.color',
         ],
-        settings: { foreground: '#CE9178' },
+        settings: { foreground: syntax('dark').string },
       },
     ],
   },

@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const typeExtensionTokens: ThemeModeFragment = {
@@ -39,7 +40,7 @@ export const typeExtensionTokens: ThemeModeFragment = {
           'storage.type.primitive.array.groovy',
           'storage.type.primitive.groovy',
         ],
-        settings: { foreground: '#b3e3d9' },
+        settings: { foreground: syntax('dark').accentGreenSoft },
       },
       {
         name: 'Types declaration and references, TS grammar specific',
@@ -52,7 +53,7 @@ export const typeExtensionTokens: ThemeModeFragment = {
           'entity.other.inherited-class',
           'punctuation.separator.namespace.ruby',
         ],
-        settings: { foreground: '#4EC9B0' },
+        settings: { foreground: syntax('dark').accentTeal },
       },
     ],
   },

@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
 export const textmateTokens: ThemeModeFragment = {
@@ -6,7 +7,7 @@ export const textmateTokens: ThemeModeFragment = {
       {
         scope: "constant.language",
         settings: {
-          foreground: "#569cd6",
+          foreground: syntax('dark').accentBlue,
         },
       },
       {
@@ -17,31 +18,31 @@ export const textmateTokens: ThemeModeFragment = {
           "keyword.operator.minus.exponent",
         ],
         settings: {
-          foreground: "#b5cea8",
+          foreground: syntax('dark').accentGreen,
         },
       },
       {
         scope: "entity.other.attribute-name",
         settings: {
-          foreground: "#9cdcfe",
+          foreground: syntax('dark').accentCyan,
         },
       },
       {
         scope: ["punctuation.terminator.statement"],
         settings: {
-          foreground: "#6E88A6",
+          foreground: syntax('dark').keyword,
         },
       },
       {
         scope: ["storage.modifier", "keyword.operator.noexcept"],
         settings: {
-          foreground: "#569cd6",
+          foreground: syntax('dark').accentBlue,
         },
       },
       {
         scope: "string.regexp",
         settings: {
-          foreground: "#d16969",
+          foreground: syntax('dark').accentRed,
         },
       },
       {
@@ -58,20 +59,20 @@ export const textmateTokens: ThemeModeFragment = {
           "keyword.operator.wordlike",
         ],
         settings: {
-          foreground: "#569cd6",
+          foreground: syntax('dark').accentBlue,
         },
       },
       {
         scope: "keyword.other.unit",
         settings: {
-          foreground: "#b5cea8",
+          foreground: syntax('dark').accentGreen,
         },
       },
       {
         name: "this.self",
         scope: "variable.language",
         settings: {
-          foreground: "#569cd6",
+          foreground: syntax('dark').accentBlue,
         },
       },
       {
@@ -86,7 +87,7 @@ export const textmateTokens: ThemeModeFragment = {
           "entity.name.operator",
         ],
         settings: {
-          foreground: "#647D97",
+          foreground: syntax('dark').storage,
         },
       },
       {
@@ -104,13 +105,13 @@ export const textmateTokens: ThemeModeFragment = {
           "constant.character.set.regexp",
         ],
         settings: {
-          foreground: "#d16969",
+          foreground: syntax('dark').accentRed,
         },
       },
       {
         scope: "constant.character.escape",
         settings: {
-          foreground: "#d7ba7d",
+          foreground: syntax('dark').function,
         },
       },
       {

@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const rubyTokens: ThemeModeFragment = {
@@ -5,7 +6,7 @@ export const rubyTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: ['punctuation.separator.namespace.ruby'],
-        settings: { foreground: '#4EC9B0' },
+        settings: { foreground: syntax('dark').accentTeal },
       },
     ],
   },

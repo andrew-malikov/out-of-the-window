@@ -1,3 +1,4 @@
+import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
 export const groovyTokens: ThemeModeFragment = {
@@ -13,7 +14,7 @@ export const groovyTokens: ThemeModeFragment = {
           'storage.type.primitive.array.groovy',
           'storage.type.primitive.groovy',
         ],
-        settings: { foreground: '#b3e3d9' },
+        settings: { foreground: syntax('dark').accentGreenSoft },
       },
     ],
   },
