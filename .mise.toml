@@ -1,6 +1,10 @@
 [tools]
 bun = "latest"
 
+[tasks.build]
+description = "Build generated theme JSON"
+run = "bun run build"
+
 [tasks.tag]
 description = "Create a UTC release tag"
 run = "./scripts/create-tag.sh"

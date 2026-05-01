@@ -2,10 +2,12 @@
 
 set -euo pipefail
 
+mise run build
+
 while IFS= read -r -d '' entry; do
     path="${entry:3}"
 
-    if [[ "$path" != "package.json" ]]; then
+    if [[ "$path" != "package.json" && "$path" != "themes/window_dark.json" && "$path" != "themes/window_light.json" ]]; then
         printf 'Refusing to tag with non-package changes present: %s\n' "$path" >&2
         exit 1
     fi
@@ -27,7 +29,7 @@ tag="${prefix}${next}"
 
 bun -e 'const fs = require("fs"); const pkg = JSON.parse(fs.readFileSync("package.json", "utf8")); pkg.version = process.argv[1]; fs.writeFileSync("package.json", `${JSON.stringify(pkg, null, 2)}\n`);' "$tag"
 
-git add package.json
+git add package.json themes/window_dark.json themes/window_light.json
 if ! git diff --cached --quiet; then
     git commit -m "chore: new version $tag"
 fi

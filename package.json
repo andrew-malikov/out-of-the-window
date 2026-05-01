@@ -10,7 +10,8 @@
     ".": "./themes/window.json"
   },
   "scripts": {
-    "package": "npx vsce package"
+    "build": "bun src/write-themes.ts",
+    "package": "bun src/write-themes.ts && npx vsce package"
   },
   "files": [
     "themes",

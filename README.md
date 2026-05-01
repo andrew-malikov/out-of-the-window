@@ -2,11 +2,19 @@
 
 Window is a VS Code theme set focused on clear structure, calm contrast, and practical coding ergonomics.
 
+## Theme Source Layout
+
+- Theme JSON in `themes/` is generated from TypeScript source in `src/`.
+- UI colors live in `src/ui/`.
+- Shared token palette and semantic rules live in `src/palette.ts`, `src/tokens/`, and `src/semantic/`.
+- Language-specific token overrides live in `src/languages/` so grammars like C# and Java can keep their own scope mappings.
+- Run `bun run build` or `mise run build` to regenerate `themes/window_dark.json` and `themes/window_light.json`.
+
 ## Release Tagging
 
-- Install `mise` and run `mise install` to provision `bun`, then run `mise run tag` to update `package.json`, create a release commit, and create a new annotated git tag in the `yyyy.mm.dd.number` format.
+- Install `mise` and run `mise install` to provision `bun`, then run `mise run tag` to build theme JSON, update `package.json`, create a release commit, and create a new annotated git tag in the `yyyy.mm.dd.number` format.
 - The command uses the current UTC date, increments the trailing number from existing local tags for that day, commits with `chore: new version <tag>`, and does not push anything.
-- It refuses to run when the worktree contains changes outside `package.json`.
+- It refuses to run when the worktree contains changes outside `package.json` and generated theme JSON in `themes/`.
 
 ## Syntax Palette Concept: **Nord × Classic Visual Studio**
 
