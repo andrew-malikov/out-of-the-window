@@ -17,7 +17,9 @@ import { typescriptTokens } from "./languages/typescript";
 import { sharedSemanticTokens } from "./semantic/shared";
 import { diffTokens } from "./specialized/diff";
 import { embeddedTokens } from "./specialized/embedded";
+import { editorTokens } from "./specialized/editor";
 import { functionTokens } from "./specialized/functions";
+import { miscTokens } from "./specialized/misc";
 import { regexTokens } from "./specialized/regex";
 import { typeExtensionTokens } from "./specialized/type-extensions";
 import { variableTokens } from "./specialized/variables";
@@ -34,6 +36,8 @@ const specializedFragments: ThemeModeFragment[] = [
   embeddedTokens,
   diffTokens,
   regexTokens,
+  editorTokens,
+  miscTokens,
   functionTokens,
   typeExtensionTokens,
   variableTokens,
@@ -211,6 +215,15 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
     ],
     ["markup.changed", "punctuation.definition.changed"],
     ["markup.ignored", "markup.untracked"],
+    [
+      "brackethighlighter.tag",
+      "brackethighlighter.curly",
+      "brackethighlighter.round",
+      "brackethighlighter.square",
+      "brackethighlighter.angle",
+      "brackethighlighter.quote",
+    ],
+    ["constant.other.reference.link", "string.other.link"],
   ];
 
   if (duplicateScopeLists.some((scopes) => matchesScopes(rule, scopes))) {
@@ -238,6 +251,16 @@ function keepLegacyTokenRule(mode: ThemeMode, rule: ThemeRule): boolean {
     "markup.quote",
     "markup.inline.raw",
     "punctuation.definition.quote.begin.markdown",
+    "brackethighlighter.unmatched",
+    "carriage-return",
+    "string variable",
+    "support.constant",
+    "support.variable",
+    "meta.module-reference",
+    "token.info-token",
+    "token.warn-token",
+    "token.error-token",
+    "token.debug-token",
   ]);
 
   if (duplicateScopes.has(getScopes(rule)[0]) && getScopes(rule).length === 1) {
