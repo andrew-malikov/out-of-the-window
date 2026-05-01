@@ -20,12 +20,6 @@ export const darkLegacyTokenColors: ThemeRule[] = [
     },
   },
   {
-    scope: 'comment',
-    settings: {
-      foreground: '#6A9955',
-    },
-  },
-  {
     scope: 'constant.language',
     settings: {
       foreground: '#569cd6',
@@ -46,12 +40,6 @@ export const darkLegacyTokenColors: ThemeRule[] = [
     scope: 'entity.other.attribute-name',
     settings: {
       foreground: '#9cdcfe',
-    },
-  },
-  {
-    scope: 'invalid',
-    settings: {
-      foreground: '#f44747',
     },
   },
   {
@@ -86,18 +74,6 @@ export const darkLegacyTokenColors: ThemeRule[] = [
     },
   },
   {
-    scope: 'storage',
-    settings: {
-      foreground: '#569cd6',
-    },
-  },
-  {
-    scope: 'storage.type',
-    settings: {
-      foreground: '#569cd6',
-    },
-  },
-  {
     scope: ['storage.modifier', 'keyword.operator.noexcept'],
     settings: {
       foreground: '#569cd6',
@@ -107,18 +83,6 @@ export const darkLegacyTokenColors: ThemeRule[] = [
     scope: 'string.regexp',
     settings: {
       foreground: '#d16969',
-    },
-  },
-  {
-    scope: 'keyword.control',
-    settings: {
-      foreground: '#569cd6',
-    },
-  },
-  {
-    scope: 'keyword.operator',
-    settings: {
-      foreground: '#d4d4d4',
     },
   },
   {
@@ -196,31 +160,6 @@ export const darkLegacyTokenColors: ThemeRule[] = [
       foreground: '#C8C8C8',
     },
   },
-  {
-    scope: ['comment', 'punctuation.definition.comment', 'string.comment'],
-    settings: {
-      foreground: '#768390',
-    },
-  },
-  {
-    scope: ['storage', 'storage.type'],
-    settings: {
-      foreground: '#F47067',
-    },
-  },
 ]
 
-export const lightLegacyTokenColors: ThemeRule[] = [
-  {
-    scope: ['comment', 'punctuation.definition.comment', 'string.comment'],
-    settings: {
-      foreground: '#6F7B88',
-    },
-  },
-  {
-    scope: ['storage', 'storage.type'],
-    settings: {
-      foreground: '#75808C',
-    },
-  },
-]
+export const lightLegacyTokenColors: ThemeRule[] = []
