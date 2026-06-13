@@ -1,140 +1,249 @@
+import { converter, formatHex8, parse } from "culori";
+
+type ThemeColor = {
+  color: NonNullable<ReturnType<typeof parse>>;
+  text: string;
+};
+
+type ThemeColorInput = string | ThemeColor;
+type ThemeColorMap = Record<string, ThemeColorInput>;
+
+const toOklch = converter("oklch");
+
+function color(value: ThemeColorInput): ThemeColor {
+  if (typeof value !== "string") {
+    return value;
+  }
+
+  const parsed = parse(value);
+  if (!parsed) {
+    throw new Error(`Invalid color: ${value}`);
+  }
+
+  return { color: parsed, text: value };
+}
+
+function alpha(value: ThemeColorInput, opacity: number): ThemeColor {
+  const source = color(value);
+
+  const opaque = opacity === 1;
+  const normalized = source.text.startsWith("#")
+    ? source.text
+    : formatHex8(source.color);
+  const withoutHash = normalized.slice(1);
+  const rgb = withoutHash.length === 8 ? withoutHash.slice(0, 6) : withoutHash;
+
+  if (opaque && withoutHash.length === 8) {
+    return { color: source.color, text: normalized };
+  }
+
+  let opacityHex = Math.round(opacity * 255)
+    .toString(16)
+    .padStart(2, "0")
+    .toUpperCase();
+
+  if (rgb !== rgb.toUpperCase() && (opacity === 1 || opacity < 0.5)) {
+    opacityHex = opacityHex.toLowerCase();
+  }
+
+  return {
+    color: { ...source.color, alpha: opacity },
+    text: `#${rgb}${opacityHex}`,
+  };
+}
+
+function tone(value: ThemeColorInput, lightnessDelta: number): ThemeColor {
+  const source = color(value);
+  const parsed = toOklch(source.color);
+  if (!parsed) {
+    throw new Error(`Invalid color: ${source.text}`);
+  }
+
+  const toned = {
+    ...parsed,
+    l: Math.min(1, Math.max(0, (parsed.l ?? 0) + lightnessDelta)),
+  };
+
+  return { color: toned, text: formatHex8(toned) };
+}
+
+function serializeColor(value: ThemeColorInput) {
+  return typeof value === "string" ? value : value.text;
+}
+
+const darkBase = {
+  bg: "#121212",
+  bgDeep: "#0D0D0D",
+  bgChrome: "#111111",
+  fg: "#dce0e5",
+  fgMuted: "#a9afbc",
+  fgSubtle: "#878a98",
+  border: "#1A1A1A",
+  primary: "#69C9B0",
+  info: "#74ade8",
+  success: "#a1c181",
+  warning: "#dec184",
+  error: "#d07277",
+  purple: "#b477cf",
+};
+
+const lightBase = {
+  bg: "#FFFFFF",
+  bgWorkbench: "#F3F5F6",
+  bgControl: "#E8ECEE",
+  fg: "#2C3135",
+  fgMuted: "#6F7B88",
+  fgSubtle: "#8E98A1",
+  border: "#D8DDE0",
+  borderControl: "#CCD3D8",
+  primary: "#3994BC",
+  success: "#4F956A",
+  warning: "#648BAD",
+  error: "#4E7FA8",
+  purple: "#8B6FAF",
+};
+
 const darkUi = {
   base: {
-    foreground: "#dce0e5ff",
-    foregroundMuted: "#a9afbcff",
-    foregroundSubtle: "#878a98ff",
-    foregroundEditor: "#acb2beff",
-    foregroundTerminal: "#abb2bfff",
-    foregroundInverse: "#FFFFFF",
-    foregroundWarningBadge: "#202020",
-    disabled: "#878a98ff",
-    transparent: "#00000000",
+    foreground: alpha(darkBase.fg, 1),
+    foregroundMuted: alpha(darkBase.fgMuted, 1),
+    foregroundSubtle: alpha(darkBase.fgSubtle, 1),
+    foregroundEditor: alpha("#acb2be", 1),
+    foregroundTerminal: alpha("#abb2bf", 1),
+    foregroundInverse: color("#FFFFFF"),
+    foregroundWarningBadge: color("#202020"),
+    disabled: alpha(darkBase.fgSubtle, 1),
+    transparent: alpha("#000000", 0),
   },
   surface: {
-    title: "#111111",
-    titleInactive: "#0e0e0e",
-    editor: "#121212FF",
-    editorAlt: "#141414FF",
-    panel: "#0D0D0DFF",
-    panelAlt: "#1A1A24FF",
-    elevated: "#24212BFF",
-    hover: "#364645AD",
-    hoverMuted: "#272630FF",
-    selection: "#455356A6",
-    selectionAlt: "#45525696",
-    lineHighlight: "#332F3E5E",
+    title: color(darkBase.bgChrome),
+    titleInactive: color("#0e0e0e"),
+    editor: alpha(darkBase.bg, 1),
+    editorAlt: alpha(tone(darkBase.bg, 0.01), 1),
+    panel: alpha(darkBase.bgDeep, 1),
+    panelAlt: alpha("#1A1A24", 1),
+    elevated: alpha("#24212B", 1),
+    hover: alpha("#364645", 0.68),
+    hoverMuted: alpha("#272630", 1),
+    selection: alpha("#455356", 0.65),
+    selectionAlt: alpha("#455256", 0.59),
+    lineHighlight: alpha("#332F3E", 0.37),
   },
   border: {
-    default: "#1A1A1AFF",
-    subtle: "#171717FF",
-    focus: "#376A7847",
+    default: alpha(darkBase.border, 1),
+    subtle: alpha("#171717", 1),
+    focus: alpha("#376A78", 0.28),
   },
   accent: {
-    primary: "#69C9B0FF",
-    primaryHover: "#6eb4bfff",
-    blue: "#74ade8ff",
-    blueSoft: "#74ade81a",
-    blueSelection: "#74ade83d",
-    cyanMatch: "#74E4E866",
-    greenSoft: "#91E8741A",
-    orangeMatch: "#e8af7466",
+    primary: alpha(darkBase.primary, 1),
+    primaryHover: alpha("#6eb4bf", 1),
+    blue: alpha(darkBase.info, 1),
+    blueSoft: alpha(darkBase.info, 0.1),
+    blueSelection: alpha(darkBase.info, 0.24),
+    cyanMatch: alpha("#74E4E8", 0.4),
+    greenSoft: alpha("#91E874", 0.1),
+    orangeMatch: alpha("#e8af74", 0.4),
   },
   state: {
-    success: "#a1c181ff",
-    modified: "#dec184ff",
-    warning: "#dec184ff",
-    warningSoft: "#dec1841a",
-    warningBorder: "#5d4c2fff",
-    error: "#d07277ff",
-    errorSoft: "#d072771a",
-    errorBorder: "#4c2b2cff",
-    infoBorder: "#293b5bff",
+    success: alpha(darkBase.success, 1),
+    modified: alpha(darkBase.warning, 1),
+    warning: alpha(darkBase.warning, 1),
+    warningSoft: alpha(darkBase.warning, 0.1),
+    warningBorder: alpha("#5d4c2f", 1),
+    error: alpha(darkBase.error, 1),
+    errorSoft: alpha(darkBase.error, 0.1),
+    errorBorder: alpha("#4c2b2c", 1),
+    infoBorder: alpha("#293b5b", 1),
   },
   scrollbar: {
-    background: "#3030304C",
-    hover: "#333333FF",
-    active: "#6161619E",
+    background: alpha("#303030", 0.3),
+    hover: alpha("#333333", 1),
+    active: alpha("#616161", 0.62),
   },
   charts: {
-    foreground: "#dce0e5ff",
-    lines: "#c8ccd480",
-    blue: "#74ade8ff",
-    red: "#d07277ff",
-    yellow: "#dec184ff",
-    orange: "#bf956aff",
-    green: "#a1c181ff",
-    purple: "#b477cfff",
+    foreground: alpha(darkBase.fg, 1),
+    lines: alpha("#c8ccd4", 0.5),
+    blue: alpha(darkBase.info, 1),
+    red: alpha(darkBase.error, 1),
+    yellow: alpha(darkBase.warning, 1),
+    orange: alpha("#bf956a", 1),
+    green: alpha(darkBase.success, 1),
+    purple: alpha(darkBase.purple, 1),
   },
 };
 
 const lightUi = {
   base: {
-    foreground: "#2C3135",
-    foregroundMuted: "#6F7B88",
-    foregroundSubtle: "#8E98A1",
-    foregroundSecondary: "#404A53",
-    foregroundInverse: "#FFFFFF",
-    disabled: "#AAB2BA",
-    transparent: "#00000000",
+    foreground: color(lightBase.fg),
+    foregroundMuted: color(lightBase.fgMuted),
+    foregroundSubtle: color(lightBase.fgSubtle),
+    foregroundSecondary: color("#404A53"),
+    foregroundInverse: color("#FFFFFF"),
+    disabled: color("#AAB2BA"),
+    transparent: alpha("#000000", 0),
   },
   surface: {
-    editor: "#FFFFFF",
-    workbench: "#F3F5F6",
-    workbenchAlt: "#ECF0F2",
-    control: "#E8ECEE",
-    controlHover: "#EDF1F4",
-    hover: "#D4DBE14F",
-    selection: "#3994BC1A",
-    selectionStrong: "#3994BC26",
-    selectionActive: "#3994BC40",
-    request: "#EEF6F8",
-    requestHover: "#E1EEF4",
+    editor: color(lightBase.bg),
+    workbench: color(lightBase.bgWorkbench),
+    workbenchAlt: color("#ECF0F2"),
+    control: color(lightBase.bgControl),
+    controlHover: color("#EDF1F4"),
+    hover: alpha("#D4DBE1", 0.31),
+    selection: alpha(lightBase.primary, 0.1),
+    selectionStrong: alpha(lightBase.primary, 0.15),
+    selectionActive: alpha(lightBase.primary, 0.25),
+    request: color("#EEF6F8"),
+    requestHover: color("#E1EEF4"),
   },
   border: {
-    default: "#D8DDE0FF",
-    muted: "#D8DDE0",
-    control: "#CCD3D8",
-    controlSoft: "#CCD3D866",
-    elevated: "#D6DCE0FF",
-    separator: "#E3E8EB",
-    focus: "#3994BCB3",
+    default: alpha(lightBase.border, 1),
+    muted: color(lightBase.border),
+    control: color(lightBase.borderControl),
+    controlSoft: alpha(lightBase.borderControl, 0.4),
+    elevated: alpha("#D6DCE0", 1),
+    separator: color("#E3E8EB"),
+    focus: alpha(lightBase.primary, 0.7),
   },
   accent: {
-    primary: "#3994BC",
-    primaryHover: "#3E9BC4",
-    primaryText: "#2F86AD",
-    blueSoft: "#3994BC24",
-    selectedTop: "#73AFCF",
+    primary: color(lightBase.primary),
+    primaryHover: color("#3E9BC4"),
+    primaryText: color("#2F86AD"),
+    blueSoft: alpha(lightBase.primary, 0.14),
+    selectedTop: color("#73AFCF"),
   },
   state: {
-    success: "#4F956A",
-    modified: "#5E84A5",
-    warning: "#648BAD",
-    warningBadge: "#7FA6C6",
-    warningSoft: "#648BAD40",
-    error: "#4E7FA8",
-    errorSoft: "#4E7FA840",
-    infoSoft: "#E4F0F4",
+    success: color(lightBase.success),
+    modified: color("#5E84A5"),
+    warning: color(lightBase.warning),
+    warningBadge: color("#7FA6C6"),
+    warningSoft: alpha(lightBase.warning, 0.25),
+    error: color(lightBase.error),
+    errorSoft: alpha(lightBase.error, 0.25),
+    infoSoft: color("#E4F0F4"),
   },
   scrollbar: {
-    background: "#8E98A126",
-    hover: "#8E98A140",
-    active: "#8E98A155",
+    background: alpha(lightBase.fgSubtle, 0.15),
+    hover: alpha(lightBase.fgSubtle, 0.25),
+    active: alpha(lightBase.fgSubtle, 0.33),
   },
   charts: {
-    foreground: "#2C3135",
-    lines: "#2C313566",
-    blue: "#57A3F8",
-    red: "#4E7FA8",
-    yellow: "#5E84A5",
-    orange: "#5A86AA",
-    green: "#4F956A",
-    purple: "#8B6FAF",
+    foreground: color(lightBase.fg),
+    lines: alpha(lightBase.fg, 0.4),
+    blue: color("#57A3F8"),
+    red: color(lightBase.error),
+    yellow: color("#5E84A5"),
+    orange: color("#5A86AA"),
+    green: color(lightBase.success),
+    purple: color(lightBase.purple),
   },
 };
 
-const flattenColorGroups = (groups: Record<string, Record<string, string>>) =>
-  Object.assign({}, ...Object.values(groups));
+const flattenColorGroups = (groups: Record<string, ThemeColorMap>) =>
+  Object.fromEntries(
+    Object.values(groups).flatMap((group) =>
+      Object.entries(group).map(([key, value]) => [key, serializeColor(value)]),
+    ),
+  );
 
 const darkUiColorGroups = {
   workbench: {

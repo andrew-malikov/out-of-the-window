@@ -41,5 +41,11 @@
     "type": "git",
     "url": "https://github.com/andrew-malikov/out-of-the-window"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "culori": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/culori": "^4.0.1"
+  }
 }
