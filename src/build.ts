@@ -1,4 +1,5 @@
-import { darkUiColors, lightUiColors } from "./ui/colors";
+import { DarkUiTheme } from "./ui/dark";
+import { LightUiTheme } from "./ui/light";
 import { csharpTokens } from "./languages/csharp";
 import { cssTokens } from "./languages/css";
 import { goTokens } from "./languages/go";
@@ -76,8 +77,8 @@ const baseDocuments: Record<
 };
 
 const uiColorsByMode: Record<ThemeMode, Record<string, string>> = {
-  dark: darkUiColors,
-  light: lightUiColors,
+  dark: DarkUiTheme,
+  light: LightUiTheme,
 };
 
 function mergeFragments(
