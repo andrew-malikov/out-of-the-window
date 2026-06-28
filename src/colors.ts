@@ -10,12 +10,6 @@ export type ThemeColorMap = Record<string, ThemeColorInput>;
 
 const toOklch = converter("oklch");
 
-export function oklch(l: number, c: number, h?: number, opacity?: number): ThemeColor {
-  const value = { mode: "oklch" as const, l, c, h, alpha: opacity };
-
-  return { color: value, text: formatHex8(value) };
-}
-
 export function color(value: ThemeColorInput): ThemeColor;
 export function color(strings: TemplateStringsArray, ...values: never[]): ThemeColor;
 export function color(value: ThemeColorInput | TemplateStringsArray, ...values: never[]): ThemeColor {
