@@ -1,5 +1,5 @@
-import { color } from '../colors'
-import { syntax } from '../palette'
+import { color } from "../colors";
+import { syntax } from "../palette";
 import type { ThemeModeFragment } from "../types";
 
 export const editorTokens: ThemeModeFragment = {
@@ -14,15 +14,15 @@ export const editorTokens: ThemeModeFragment = {
           "brackethighlighter.angle",
           "brackethighlighter.quote",
         ],
-        settings: { foreground: color`oklch(60% 0.03 248.24)`.text },
+        settings: { foreground: syntax("dark").keyword },
       },
       {
         scope: "brackethighlighter.unmatched",
-        settings: { foreground: syntax('dark').invalidSoft },
+        settings: { foreground: syntax("dark").invalidSoft },
       },
       {
         scope: ["constant.other.reference.link", "string.other.link"],
-        settings: { foreground: syntax('dark').accentCyanSoft },
+        settings: { foreground: syntax("dark").accentCyanSoft },
       },
       {
         scope: "token.info-token",
@@ -53,15 +53,15 @@ export const editorTokens: ThemeModeFragment = {
           "brackethighlighter.angle",
           "brackethighlighter.quote",
         ],
-        settings: { foreground: syntax('light').keyword },
+        settings: { foreground: syntax("light").keyword },
       },
       {
         scope: "brackethighlighter.unmatched",
-        settings: { foreground: syntax('light').invalid },
+        settings: { foreground: syntax("light").invalid },
       },
       {
         scope: ["constant.other.reference.link", "string.other.link"],
-        settings: { foreground: syntax('light').constant },
+        settings: { foreground: syntax("light").constant },
       },
     ],
   },

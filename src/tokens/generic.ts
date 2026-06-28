@@ -1,5 +1,5 @@
-import { color } from '../colors'
-import { syntax } from '../palette'
+import { color } from "../colors";
+import { syntax } from "../palette";
 import type { ThemeModeFragment } from "../types";
 
 export const genericTokens: ThemeModeFragment = {
@@ -18,11 +18,15 @@ export const genericTokens: ThemeModeFragment = {
           "variable.language",
           "entity",
         ],
-        settings: { foreground: syntax('dark').accentSky },
+        settings: { foreground: syntax("dark").accentSky },
       },
       {
-        scope: ["entity.name", "meta.export.default", "meta.definition.variable"],
-        settings: { foreground: color`oklch(77% 0.14 59.15)`.text },
+        scope: [
+          "entity.name",
+          "meta.export.default",
+          "meta.definition.variable",
+        ],
+        settings: { foreground: syntax("dark").mutedForeground },
       },
       {
         scope: [
@@ -34,23 +38,23 @@ export const genericTokens: ThemeModeFragment = {
           "meta.object.member",
           "meta.embedded.expression",
         ],
-        settings: { foreground: syntax('dark').mutedForeground },
+        settings: { foreground: syntax("dark").mutedForeground },
       },
       {
         scope: ["entity.name.tag", "support.class.component"],
-        settings: { foreground: syntax('dark').accentGreenBright },
+        settings: { foreground: syntax("dark").accentGreenBright },
       },
       {
         scope: ["string", "string punctuation.section.embedded source"],
-        settings: { foreground: syntax('dark').accentCyanSoft },
+        settings: { foreground: syntax("dark").accentCyanSoft },
       },
       {
         scope: "support",
-        settings: { foreground: syntax('dark').accentSky },
+        settings: { foreground: syntax("dark").accentSky },
       },
       {
         scope: "variable.other",
-        settings: { foreground: syntax('dark').mutedForeground },
+        settings: { foreground: syntax("dark").mutedForeground },
       },
     ],
   },
@@ -58,7 +62,7 @@ export const genericTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: ["constant.other.placeholder", "constant.character"],
-        settings: { foreground: syntax('light').number },
+        settings: { foreground: syntax("light").number },
       },
       {
         scope: [
@@ -69,11 +73,15 @@ export const genericTokens: ThemeModeFragment = {
           "variable.language",
           "entity",
         ],
-        settings: { foreground: syntax('light').constant },
+        settings: { foreground: syntax("light").constant },
       },
       {
-        scope: ["entity.name", "meta.export.default", "meta.definition.variable"],
-        settings: { foreground: syntax('light').foreground },
+        scope: [
+          "entity.name",
+          "meta.export.default",
+          "meta.definition.variable",
+        ],
+        settings: { foreground: syntax("light").foreground },
       },
       {
         scope: [
@@ -85,23 +93,23 @@ export const genericTokens: ThemeModeFragment = {
           "meta.object.member",
           "meta.embedded.expression",
         ],
-        settings: { foreground: syntax('light').foreground },
+        settings: { foreground: syntax("light").foreground },
       },
       {
         scope: ["entity.name.tag", "support.class.component"],
-        settings: { foreground: syntax('light').accentGreen },
+        settings: { foreground: syntax("light").accentGreen },
       },
       {
         scope: ["string", "string punctuation.section.embedded source"],
-        settings: { foreground: syntax('light').string },
+        settings: { foreground: syntax("light").string },
       },
       {
         scope: "support",
-        settings: { foreground: syntax('light').keyword },
+        settings: { foreground: syntax("light").keyword },
       },
       {
         scope: "variable.other",
-        settings: { foreground: syntax('light').foreground },
+        settings: { foreground: syntax("light").foreground },
       },
     ],
   },

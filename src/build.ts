@@ -12,17 +12,17 @@ import { pythonTokens } from "./languages/python";
 import { rubyTokens } from "./languages/ruby";
 import { typescriptTokens } from "./languages/typescript";
 import { sharedSemanticTokens } from "./semantic/shared";
-import { diffTokens } from "./specialized/diff";
-import { embeddedTokens } from "./specialized/embedded";
-import { editorTokens } from "./specialized/editor";
-import { functionTokens } from "./specialized/functions";
-import { genericTokens } from "./specialized/generic";
-import { markupTokens } from "./specialized/markup";
-import { miscTokens } from "./specialized/misc";
-import { regexTokens } from "./specialized/regex";
-import { textmateTokens } from "./specialized/textmate";
-import { typeExtensionTokens } from "./specialized/type-extensions";
-import { variableTokens } from "./specialized/variables";
+import { diffTokens } from "./tokens/diff";
+import { embeddedTokens } from "./tokens/embedded";
+import { editorTokens } from "./tokens/editor";
+import { functionTokens } from "./tokens/functions";
+import { genericTokens } from "./tokens/generic";
+import { markupTokens } from "./tokens/markup";
+import { miscTokens } from "./tokens/misc";
+import { regexTokens } from "./tokens/regex";
+import { textmateTokens } from "./tokens/textmate";
+import { typeExtensionTokens } from "./tokens/type-extensions";
+import { variableTokens } from "./tokens/variables";
 import { sharedTokens } from "./tokens/shared";
 import type {
   ThemeDocument,
