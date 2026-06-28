@@ -195,7 +195,7 @@
     "editor.findMatchHighlightBackground": "#dfc07f66",
     "editor.findRangeHighlightBackground": "#0d0d0dff",
     "editor.hoverHighlightBackground": "#0d0d0dff",
-    "editor.lineHighlightBackground": "#76ace51f",
+    "editor.lineHighlightBackground": "#dde2e814",
     "editor.rangeHighlightBackground": "#0d0d0dff",
     "editorLink.activeForeground": "#3fa38bff",
     "editorWhitespace.foreground": "#898b994d",
@@ -1032,7 +1032,7 @@
         "support.type"
       ],
       "settings": {
-        "foreground": "#b4b4b4ff",
+        "foreground": "#bebebeff",
         "fontStyle": "italic"
       }
     },
@@ -1160,7 +1160,7 @@
         "storage.type.variable.cs"
       ],
       "settings": {
-        "foreground": "#b4b4b4ff"
+        "foreground": "#bebebeff"
       }
     },
     {
@@ -1225,7 +1225,7 @@
         "storage.type.rune.go"
       ],
       "settings": {
-        "foreground": "#b4b4b4ff"
+        "foreground": "#bebebeff"
       }
     },
     {
@@ -1290,7 +1290,7 @@
         "storage.type.token.java"
       ],
       "settings": {
-        "foreground": "#b4b4b4ff"
+        "foreground": "#bebebeff"
       }
     },
     {
@@ -1374,7 +1374,7 @@
         "entity.other.inherited-class"
       ],
       "settings": {
-        "foreground": "#b4b4b4ff"
+        "foreground": "#bebebeff"
       }
     }
   ],
@@ -1386,8 +1386,8 @@
     "method": "#bbcfefff",
     "keyword": "#9e9e9eff",
     "operator": "#aeaeaeff",
-    "namespace": "#b4b4b4ff",
-    "type": "#b4b4b4ff",
+    "namespace": "#bebebeff",
+    "type": "#bebebeff",
     "newOperator": "#9e9e9eff",
     "stringLiteral": "#adcdf8ff",
     "customLiteral": "#c8a095ff",

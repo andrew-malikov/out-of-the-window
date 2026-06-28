@@ -17,7 +17,7 @@ const syntaxColorPalette: Record<ThemeMode, Record<string, ThemeColor>> = {
     commentMuted: color`oklch(55% 0 0)`,
     keyword: color`oklch(70% 0 0)`,
     storage: color`oklch(70% 0 0)`,
-    type: color`oklch(77% 0 219.55)`,
+    type: color`oklch(80% 0 219.55)`,
     function: color`oklch(85% 0.05 260)`,
     variable: color`oklch(85% 0 264.46)`,
     property: color`oklch(90% 0 12.07)`,

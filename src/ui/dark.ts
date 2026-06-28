@@ -39,7 +39,7 @@ const ui = {
     hoverMuted: alpha(tone(base.bg, 0.09), 1),
     selection: alpha(base.info, 0.24),
     selectionAlt: alpha(base.info, 0.18),
-    lineHighlight: alpha(base.info, 0.12),
+    lineHighlight: alpha(base.fg, 0.08),
     indentGuide: base.fgMuted,
     terminal: alpha(tone(base.bg, 0.01), 1),
     terminalSelection: alpha(base.info, 0.32),
