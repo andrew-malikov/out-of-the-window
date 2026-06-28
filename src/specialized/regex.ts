@@ -1,3 +1,4 @@
+import { color } from '../colors'
 import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
@@ -6,7 +7,7 @@ export const regexTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: 'constant.regexp',
-        settings: { foreground: '#646695' },
+        settings: { foreground: color`oklch(53% 0.07 281.68)`.text },
       },
       {
         name: 'Regular expression groups',
@@ -32,7 +33,7 @@ export const regexTokens: ThemeModeFragment = {
       },
       {
         scope: ['keyword.operator.or.regexp', 'keyword.control.anchor.regexp'],
-        settings: { foreground: '#DCDCAA' },
+        settings: { foreground: color`oklch(88% 0.07 107.67)`.text },
       },
       {
         scope: 'keyword.operator.quantifier.regexp',

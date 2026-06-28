@@ -1,3 +1,4 @@
+import { color } from '../colors'
 import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
@@ -19,7 +20,7 @@ export const markupTokens: ThemeModeFragment = {
       {
         scope: "header",
         settings: {
-          foreground: "#000080",
+          foreground: color`oklch(27% 0.19 264.05)`.text,
         },
       },
       {

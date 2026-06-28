@@ -16,7 +16,23 @@ export function oklch(l: number, c: number, h?: number, opacity?: number): Theme
   return { color: value, text: formatHex8(value) };
 }
 
-export function color(value: ThemeColorInput): ThemeColor {
+export function color(value: ThemeColorInput): ThemeColor;
+export function color(strings: TemplateStringsArray, ...values: never[]): ThemeColor;
+export function color(value: ThemeColorInput | TemplateStringsArray, ...values: never[]): ThemeColor {
+  if (typeof value !== "string" && "raw" in value) {
+    if (values.length > 0) {
+      throw new Error("Color templates must be static");
+    }
+
+    const text = value[0];
+    const parsed = parse(text);
+    if (!parsed) {
+      throw new Error(`Invalid color: ${text}`);
+    }
+
+    return { color: parsed, text: formatHex8(parsed) };
+  }
+
   if (typeof value !== "string") {
     return value;
   }
@@ -76,8 +92,6 @@ export function tone(value: ThemeColorInput, lightnessDelta: number): ThemeColor
 export function serializeColor(value: ThemeColorInput) {
   return typeof value === "string" ? value : value.text;
 }
-
-
 
 export const flattenColorGroups = (groups: Record<string, ThemeColorMap>) =>
   Object.fromEntries(

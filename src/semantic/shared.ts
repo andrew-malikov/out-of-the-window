@@ -1,3 +1,4 @@
+import { color } from '../colors'
 import { syntax } from '../palette'
 import type { ThemeModeFragment } from '../types'
 
@@ -13,7 +14,7 @@ export const sharedSemanticTokens: ThemeModeFragment = {
       operator: syntax('dark').operator,
       namespace: syntax('dark').type,
       type: syntax('dark').type,
-      newOperator: '#5E81AC',
+      newOperator: color`oklch(59% 0.08 254.03)`.text,
       stringLiteral: syntax('dark').string,
       customLiteral: syntax('dark').constant,
       numberLiteral: syntax('dark').number,

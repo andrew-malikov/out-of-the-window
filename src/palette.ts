@@ -1,56 +1,70 @@
-import type { ThemeMode } from './types'
+import { color, serializeColor, type ThemeColor } from "./colors";
+import type { ThemeMode } from "./types";
 
-export const syntaxPalette: Record<ThemeMode, Record<string, string>> = {
-  dark: {
-    foreground: '#acb2be',
-    mutedForeground: '#a9afbc',
-    comment: '#919191',
-    commentMuted: '#B3B3B3',
-    keyword: '#999999',
-    storage: '#696969',
-    type: '#84BDCF',
-    function: '#ADD1F7',
-    variable: '#acb2be',
-    property: '#D6C9CA',
-    string: '#BBD4A5',
-    number: '#6ABF88',
-    constant: '#DF9884',
-    operator: '#ADADAD',
-    regex: '#bf956a',
-    invalid: '#d07277',
-    accentBlue: '#74ade8',
-    accentSky: '#77AAE0',
-    accentCyan: '#6eb4bf',
-    accentCyanSoft: '#87ACAD',
-    accentGreen: '#a1c181',
-    accentGreenBright: '#91E874',
-    accentGreenSoft: '#8DB372',
-    accentGray: '#dce0e5',
-    accentOrange: '#bf956a',
-    accentRed: '#d07277',
-    accentTeal: '#69C9B0',
-    invalidSoft: '#e06c75',
-  },
-  light: {
-    foreground: '#2C3135',
-    comment: '#6F7B88',
-    commentMuted: '#6F7B88',
-    keyword: '#75808C',
-    storage: '#75808C',
-    type: '#4F6B78',
-    function: '#2C3135',
-    variable: '#2C3135',
-    property: '#404A53',
-    string: '#6A8094',
-    number: '#4E7FA8',
-    constant: '#2F86AD',
-    operator: '#75808C',
-    regex: '#2F86AD',
-    invalid: '#476C8D',
-    accentGreen: '#4F956A',
-  },
+function serializePalette(
+  palette: Record<string, ThemeColor>,
+): Record<string, string> {
+  return Object.fromEntries(
+    Object.entries(palette).map(([key, value]) => [key, serializeColor(value)]),
+  );
 }
 
+const syntaxColorPalette: Record<ThemeMode, Record<string, ThemeColor>> = {
+  dark: {
+    foreground: color`oklch(76% 0.02 264.46)`,
+    mutedForeground: color`oklch(75% 0.02 265.94)`,
+    comment: color`oklch(66% 0 0)`,
+    commentMuted: color`oklch(77% 0 0)`,
+    keyword: color`oklch(68% 0 0)`,
+    storage: color`oklch(52% 0 0)`,
+    type: color`oklch(77% 0.06 219.55)`,
+    function: color`oklch(85% 0.07 250)`,
+    variable: color`oklch(76% 0.02 264.46)`,
+    property: color`oklch(85% 0.01 12.07)`,
+    string: color`oklch(84% 0.07 130.6)`,
+    number: color`oklch(74% 0.12 154.1)`,
+    constant: color`oklch(74% 0.09 36.41)`,
+    operator: color`oklch(75% 0 0)`,
+    regex: color`oklch(70% 0.08 66.67)`,
+    invalid: color`oklch(66% 0.12 17.45)`,
+    accentBlue: color`oklch(73% 0.1 250.24)`,
+    accentSky: color`oklch(72% 0.1 250.63)`,
+    accentCyan: color`oklch(73% 0.07 208.44)`,
+    accentCyanSoft: color`oklch(72% 0.04 198.35)`,
+    accentGreen: color`oklch(77% 0.09 129.94)`,
+    accentGreenBright: color`oklch(85% 0.17 138.38)`,
+    accentGreenSoft: color`oklch(72% 0.1 133.04)`,
+    accentGray: color`oklch(91% 0.01 253.86)`,
+    accentOrange: color`oklch(70% 0.08 66.67)`,
+    accentRed: color`oklch(66% 0.12 17.45)`,
+    accentTeal: color`oklch(77% 0.1 174.53)`,
+    invalidSoft: color`oklch(67% 0.14 17)`,
+  },
+  light: {
+    foreground: color`oklch(31% 0.01 242)`,
+    comment: color`oklch(58% 0.02 250.38)`,
+    commentMuted: color`oklch(58% 0.02 250.38)`,
+    keyword: color`oklch(59% 0.02 250.52)`,
+    storage: color`oklch(59% 0.02 250.52)`,
+    type: color`oklch(51% 0.04 228.19)`,
+    function: color`oklch(31% 0.01 242)`,
+    variable: color`oklch(31% 0.01 242)`,
+    property: color`oklch(40% 0.02 245.48)`,
+    string: color`oklch(59% 0.04 245.98)`,
+    number: color`oklch(58% 0.08 245.16)`,
+    constant: color`oklch(59% 0.1 231.68)`,
+    operator: color`oklch(59% 0.02 250.52)`,
+    regex: color`oklch(59% 0.1 231.68)`,
+    invalid: color`oklch(52% 0.07 246.45)`,
+    accentGreen: color`oklch(61% 0.1 155.22)`,
+  },
+};
+
+export const syntaxPalette: Record<ThemeMode, Record<string, string>> = {
+  dark: serializePalette(syntaxColorPalette.dark),
+  light: serializePalette(syntaxColorPalette.light),
+};
+
 export function syntax(mode: ThemeMode) {
-  return syntaxPalette[mode]
+  return syntaxPalette[mode];
 }

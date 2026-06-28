@@ -1,3 +1,4 @@
+import { color } from '../colors'
 import type { ThemeModeFragment } from '../types'
 
 export const functionTokens: ThemeModeFragment = {
@@ -12,7 +13,7 @@ export const functionTokens: ThemeModeFragment = {
           'source.powershell variable.other.member',
           'entity.name.operator.custom-literal',
         ],
-        settings: { foreground: '#DCDCAA' },
+        settings: { foreground: color`oklch(88% 0.07 107.67)`.text },
       },
     ],
   },

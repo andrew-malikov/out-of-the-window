@@ -1,3 +1,4 @@
+import { color } from '../colors'
 import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
@@ -6,7 +7,7 @@ export const genericTokens: ThemeModeFragment = {
     tokenColors: [
       {
         scope: ["constant.other.placeholder", "constant.character"],
-        settings: { foreground: "#F47067" },
+        settings: { foreground: color`oklch(70% 0.16 26.07)`.text },
       },
       {
         scope: [
@@ -21,7 +22,7 @@ export const genericTokens: ThemeModeFragment = {
       },
       {
         scope: ["entity.name", "meta.export.default", "meta.definition.variable"],
-        settings: { foreground: "#F69D50" },
+        settings: { foreground: color`oklch(77% 0.14 59.15)`.text },
       },
       {
         scope: [

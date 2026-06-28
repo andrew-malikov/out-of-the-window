@@ -1,3 +1,4 @@
+import { color } from '../colors'
 import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
@@ -12,7 +13,7 @@ export const miscTokens: ThemeModeFragment = {
         settings: {
           fontStyle: "italic underline",
           background: syntax('light').number,
-          foreground: "#F7F9FA",
+          foreground: color`oklch(98% 0 228.78)`.text,
           content: "^M",
         },
       },

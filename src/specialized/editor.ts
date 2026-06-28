@@ -1,3 +1,4 @@
+import { color } from '../colors'
 import { syntax } from '../palette'
 import type { ThemeModeFragment } from "../types";
 
@@ -13,7 +14,7 @@ export const editorTokens: ThemeModeFragment = {
           "brackethighlighter.angle",
           "brackethighlighter.quote",
         ],
-        settings: { foreground: "#768390" },
+        settings: { foreground: color`oklch(60% 0.03 248.24)`.text },
       },
       {
         scope: "brackethighlighter.unmatched",
@@ -25,19 +26,19 @@ export const editorTokens: ThemeModeFragment = {
       },
       {
         scope: "token.info-token",
-        settings: { foreground: "#6796E6" },
+        settings: { foreground: color`oklch(67% 0.13 260.52)`.text },
       },
       {
         scope: "token.warn-token",
-        settings: { foreground: "#CD9731" },
+        settings: { foreground: color`oklch(71% 0.13 79.09)`.text },
       },
       {
         scope: "token.error-token",
-        settings: { foreground: "#F44747" },
+        settings: { foreground: color`oklch(65% 0.21 25.22)`.text },
       },
       {
         scope: "token.debug-token",
-        settings: { foreground: "#B267E6" },
+        settings: { foreground: color`oklch(65% 0.19 309.32)`.text },
       },
     ],
   },

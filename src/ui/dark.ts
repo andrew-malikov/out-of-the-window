@@ -1,4 +1,4 @@
-import { alpha, color, flattenColorGroups, oklch, tone } from "./colors";
+import { alpha, color, flattenColorGroups, oklch, tone } from "../colors";
 
 const base = {
   bg: oklch(0.18, 0),
