@@ -1,6 +1,6 @@
 # Window Theme
 
-![Window Theme preview](./frontpage/preview.jpeg)
+![Window Theme preview](./frontpage/preview.jpg)
 
 ## Build
 
